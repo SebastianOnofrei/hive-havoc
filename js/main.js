@@ -12,8 +12,8 @@ window.addEventListener("load", function () {
   // initializing canvas
   const canvas = document.getElementById("canvas1");
   const context = canvas.getContext("2d"); //canvas rendering context
-  canvas.width = 800;
-  canvas.height = 600;
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 
   // Manage global state
   let currentState = "intro"; // Initial state
