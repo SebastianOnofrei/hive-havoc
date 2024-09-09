@@ -1,70 +1,77 @@
 // We put our JS here so we wait for all the assets to be loaded before doing anything
+import { IntroScene } from "./scenes/IntroScene.js";
+import { MainScene } from "./scenes/MainScene.js";
+import { GameOverScene } from "./scenes/GameOverScene.js";
+import { ResumeScene } from "./scenes/ResumeScene.js";
+import { SettingsScene } from "./scenes/SettingsScene.js";
+import { StateManager } from "./StateManager.js";
 
 window.addEventListener("load", function () {
-  // initializing canvas
-  const canvas = document.getElementById("canvas1");
-  const context = canvas.getContext("2d");
-  canvas.width = 1440;
-  canvas.height = 1080;
-
-  // dom elements
-  const hitBtn = document.querySelector(".hit-button");
-
-  hitBtn.addEventListener("click", (e) => {
-    console.log(e);
-    console.log("Pressed button");
-  });
-  // Loading music
   const audio = document.getElementById("background-music");
 
-  // loading backgrounds
-  const autumnBg = document.getElementById("autumn-bg");
-  const springBg = document.getElementById("spring-bg");
-  const summerBg = document.getElementById("summer-bg");
-  const winterBg = document.getElementById("winter-bg");
+  // initializing canvas
+  const canvas = document.getElementById("canvas1");
+  const context = canvas.getContext("2d"); //canvas rendering context
+  canvas.width = 800;
+  canvas.height = 600;
 
-  const backgrounds = [autumnBg, springBg, summerBg, winterBg];
-  let currentIndex = 0;
-  let backgroundImage = new Image();
+  // Manage global state
+  let currentState = "intro"; // Initial state
+  const scenes = {}; // Object to store scene instances
 
-  // individual sprites (only when one type remaining on each)
-  const workerBee = document.getElementById("worker-bee");
-  const droneBee = document.getElementById("drone-bee");
-  const queenBee = document.getElementById("queen-bee");
+  // Initialize scenes
+  scenes["intro"] = new IntroScene();
+  scenes["main"] = new MainScene();
+  scenes["gameover"] = new GameOverScene();
+  scenes["resume"] = new ResumeScene();
+  scenes["settings"] = new SettingsScene();
 
-  // swarm sprites
-  const droneBeesSwarm = document.getElementById("drone-bees-swarm");
-  const workerBeesSwarm = document.getElementById("worker-bees-swarm");
+  // Handle user input
+  canvas.addEventListener("click", function (event) {
+    const x = event.offsetX;
+    const y = event.offsetY;
 
-  function changeBackground() {
-    backgroundImage.src = backgrounds[currentIndex].src;
-    backgroundImage.onload = function () {
-      context.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+    if (scenes[StateManager.getState()]) {
+      scenes[StateManager.getState()].handleInput(x, y);
+    }
+  });
 
-      context.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height); // Draw new background
+  function gameLoop() {
+    if (scenes[StateManager.getState()]) {
+      scenes[StateManager.getState()].draw(context);
+    }
 
-      context.drawImage(workerBeesSwarm, 340, 400, 350, 350);
-      context.drawImage(queenBee, 600, 200, 350, 350);
-
-      context.drawImage(droneBeesSwarm, 800, 400, 350, 350);
-    };
-
-    currentIndex = (currentIndex + 1) % backgrounds.length; // Increment index and loop back if needed
+    requestAnimationFrame(gameLoop); // Continue the loop
   }
 
-  // Initial call to display the first background
-  changeBackground();
-
-  // Set Interval to change background every 8 seconds
-  // setInterval(changeBackground, 30000);
-  // class Game {
-  //   constructor(width, height) {
-  //     this.width = width;
-  //     this.height = height;
-  //   }
-
-  //   update() {}
-  //   draw() {}
-  // }
+  // Start the game loop
+  gameLoop();
   // audio.play();
 });
+
+// dom elements
+// const hitBtn = document.querySelector(".hit-button");
+// const playerName = document.querySelector(".player__name");
+// // aici o sa fie Player.name
+// playerName.textContent = "Player.name";
+
+// // event listeners
+// hitBtn.addEventListener("click", (e) => {
+//   console.log(e);
+//   console.log("Pressed button");
+//   // implementare random hitting of an enemy
+// });
+// // Loading music
+// const audio = document.getElementById("background-music");
+
+//   // Increment index and loop back if needed - used for the background changer
+//   currentIndex = (currentIndex + 1) % backgrounds.length;
+// }
+
+// // Initial call to display the first background
+// changeBackground();
+
+// // Set Interval to change background every 8 seconds
+// // setInterval(changeBackground, 30000);
+
+// // audio.play();

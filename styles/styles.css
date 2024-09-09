@@ -1,4 +1,5 @@
 @import url("./index.css");
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap');
 /* CSS Resets */
 *,*::after,*::before{
     margin: 0;
@@ -8,29 +9,32 @@
 
 :root{
     --primary:rgba(216, 63, 43, 0.959);
+    --black:rgb(56, 56, 56);
     --secondary:#fcfcfc;
+    --font-primary:'Fraunces',sans-serif;
+    --box-shadow-honey: 0 4px 8px rgba(255, 204, 0, 0.5), 0 8px 16px rgba(255, 204, 0, 0.3);
 }
 
 #canvas1{
-    border: 5px solid black;
+    border: 5px solid var(--black);
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
     /* so that the canvas will scale down */
-    max-width: 100%;
-    max-height: 100%;
-    height: 100%;
-    width: 100%;
 }
 
+/* 
+ We don't want to show the sprites in HTML directly
+ We will inject them into the Canvas with by using Canvas API
+*/
 #worker-bee,#drone-bee,#queen-bee{
-display: none;
-width: 100px;
-height: 100px;
+    display: none;
+    width: 100px;
+    height: 100px;
 }
 
-#drone-bess-swarm,#worker-bees-swarm{
+#drone-bees-swarm,#worker-bees-swarm{
     display: none;
     width:150px;
     height: 150px;
@@ -40,3 +44,24 @@ height: 100px;
     display: none;
 }
 
+
+/* .player__name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    width: 250px;
+    max-width: 600px;
+    height: 50px;
+    white-space: nowrap;
+    background: url('../assets/backgrounds/honey-bg.jpg');
+    background-size: cover;
+    border: none;
+    box-shadow: var(--box-shadow-honey);
+    color: var(--secondary);
+    font-family: var(--font-primary);
+    font-size: 24px;
+    
+} */

@@ -12,26 +12,32 @@
 </head>
 <body>
     <canvas id="canvas1"></canvas>
+  
+    <div class="health-bar"></div>
+    <div class="player__name-container"></div>
+    <div class="settings">
+        <h1>Settings</h1>
+        <input type="text" placeholder="PlayerName" id="player-name">
+        <!-- asta cu sunetul. -->
+        <input type="checkbox" id="music-toggle">
+    </div>
+    
     <button class="button hit-button">HIT</button>
     <button class="button menu-button"></button>
     <!-- I load here all the assets I need in JavaScript -->
-
     <!-- loading sounds -->
-    <audio id="background-music" src="./assets/sounds/main-menu-song.wav" preload="auto" loop></audio>
-    
+    <audio id="background-music" src="./assets/sounds/fight_looped.wav" preload="auto" loop></audio>
     <!-- loading backgrounds -->
     <img id="spring-bg" src="./assets/backgrounds/spring.png" alt="spring background">
     <img id="summer-bg" src="./assets/backgrounds/summer.png" alt="summer background">
     <img id="autumn-bg" src="./assets/backgrounds/autumn.png" alt="autumn background">
     <img id="winter-bg" src="./assets/backgrounds/winter.png" alt="winter background">
-
     <!-- Loading sprites  -->
     <img id="worker-bee" src="./assets/sprites/worker-bee.png" alt="bee">
     <img id="drone-bee" src="./assets/sprites/drone-bee.png" alt="bee">
     <img id="queen-bee" src="./assets/sprites/queen-bee.svg" alt="bee">
     <img id="drone-bees-swarm" src="./assets/sprites/drone-bees.png" alt="drone bees swarm">
     <img id="worker-bees-swarm" src="./assets/sprites/worker-bees.png" alt="worker bees swarm">
-    <div class="health-bar"></div>
     <script src="./js/main.js" type="module"></script>
 </body>
 </html>

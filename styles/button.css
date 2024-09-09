@@ -1,18 +1,17 @@
-.button{
+/* .button{
     position: absolute;
     padding: 1rem 3rem;
     cursor: pointer;
     background-color: var(--primary);
-    color: var(--secondary); 
-   
-    box-shadow: 0 0 10px black;
+    color: rgb(0, 0, 0); 
+    box-shadow: 0 0 10px var(--black);
     
 }
 .menu-button{
-    width: 32px;
-    height: 42px;
-    top: 5%;
-    right: 5%;
+    width: 10px;
+    height: 16px;
+    top: 2%;
+    right: 2%;
     background: url('../assets/menu-button.png'), var(--primary);
     background-size: contain;
     transition: all 0.3s ease-in;
@@ -26,6 +25,21 @@
 .hit-button{
     bottom: 10%;
     left: 50%;
-    animation: bounce linear infinite 4.5s; 
-    border: double 4px black;
+    transition: all 0.3s ease-in;
+    box-shadow: var(--box-shadow-honey);
+    border-radius: 2rem;
+    border: 2px solid var(--black);
+    background: url('../assets/backgrounds/honey-bg.jpg');
+    background-size: cover;
+    font-family: var(--font-primary);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.hit-button:hover{
+    transform: scale(1.04);
+} */
+
+button{
+    display: none;
 }
