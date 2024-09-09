@@ -1,0 +1,26 @@
+.health-bar{
+    height: 2rem;
+    width: 10rem;
+    /* default color */
+    background-color: gray;
+    &.red{
+        background-color: red;
+    }
+
+    &.orange{
+        background-color: orange;
+    }
+
+    &.green{
+        background-color: greenyellow;
+    }
+
+    &.yellow{
+        background-color: yellow;
+    }
+}
+
+
+
+
+

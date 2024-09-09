@@ -1,0 +1,25 @@
+@import url("./healthbar.css");
+
+/* CSS Resets */
+*,*::after,*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#canvas1{
+    border: 5px solid black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    /* so that the canvas will scale down */
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#worker-bee,#drone-bee,#queen-bee{
+display: none;
+width: 100px;
+height: 100px;
+}
