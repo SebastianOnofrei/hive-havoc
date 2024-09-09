@@ -16,10 +16,26 @@
     /* so that the canvas will scale down */
     max-width: 100%;
     max-height: 100%;
+    height: 100%;
+    width: 100%;
 }
 
 #worker-bee,#drone-bee,#queen-bee{
 display: none;
 width: 100px;
 height: 100px;
+}
+
+#drone-bess-swarm,#worker-bees-swarm{
+    display: none;
+    width:150px;
+    height: 150px;
+}
+
+#bee-hive{
+    
+}
+
+#spring-bg,#summer-bg,#autumn-bg,#winter-bg{
+    display: none;
 }
