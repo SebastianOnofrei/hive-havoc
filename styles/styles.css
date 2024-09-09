@@ -1,10 +1,14 @@
-@import url("./healthbar.css");
-
+@import url("./index.css");
 /* CSS Resets */
 *,*::after,*::before{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+:root{
+    --primary:rgba(216, 63, 43, 0.959);
+    --secondary:#fcfcfc;
 }
 
 #canvas1{
@@ -32,10 +36,7 @@ height: 100px;
     height: 150px;
 }
 
-#bee-hive{
-    
-}
-
 #spring-bg,#summer-bg,#autumn-bg,#winter-bg{
     display: none;
 }
+

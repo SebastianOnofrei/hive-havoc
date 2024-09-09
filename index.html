@@ -3,20 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/style.css">
+    <meta name="title" content="Hive Havoc - A Thrilling JavaScript Game">
+    <meta name="description" content="Hive Havoc is a JavaScript game where you get revenge after a swarm attack">
+    <meta name="keywords" content="Hive Havoc, JavaScript game, bee game, browser game, HTML5 game">
+    <meta name="author" content="Sebastian Onofrei">
+    <link rel="stylesheet" href="./styles/styles.css">
     <title>Hive Havoc</title>
 </head>
 <body>
     <canvas id="canvas1"></canvas>
+    <button class="button hit-button">HIT</button>
+    <button class="button menu-button"></button>
     <!-- I load here all the assets I need in JavaScript -->
+
     <!-- loading sounds -->
     <audio id="background-music" src="./assets/sounds/main-menu-song.wav" preload="auto" loop></audio>
+    
     <!-- loading backgrounds -->
     <img id="spring-bg" src="./assets/backgrounds/spring.png" alt="spring background">
     <img id="summer-bg" src="./assets/backgrounds/summer.png" alt="summer background">
     <img id="autumn-bg" src="./assets/backgrounds/autumn.png" alt="autumn background">
     <img id="winter-bg" src="./assets/backgrounds/winter.png" alt="winter background">
-    
+
     <!-- Loading sprites  -->
     <img id="worker-bee" src="./assets/sprites/worker-bee.png" alt="bee">
     <img id="drone-bee" src="./assets/sprites/drone-bee.png" alt="bee">

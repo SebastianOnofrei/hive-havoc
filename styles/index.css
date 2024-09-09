@@ -1,0 +1,4 @@
+/* In this file we have all our imports, prepare them to be exported to styles.css */
+@import url("./button.css");
+@import url("./healthbar.css");
+@import url("./animations.css");
