@@ -1,0 +1,44 @@
+.settings{
+    /* activam cu clasa active */
+        display: none;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+     
+        color: white;
+        padding: 6rem;
+        background: url('../assets/backgrounds/spring.png') ;
+        background-repeat: no-repeat;
+        background-position: top;
+        
+        &.active{
+            display: block;
+        }
+    
+        .settings__close-btn{
+            position: absolute;
+            top: 2%;
+            right: 2%;
+            width:  32px;
+            height: 32px;
+            background: url('../assets/close-btn.png'); 
+            transition: all 0.3s ease-in;
+            cursor: pointer;
+        }
+    
+        .settings__close-btn:hover{
+            transform: scale(1.25);
+        }
+    
+        .settings__bee-queen{
+            max-width:500px;
+            max-height:500px;
+            min-height: 250px;
+            min-width: 250px;
+            position: absolute;
+            right: 5%;
+            animation: bounce infinite linear 5s;
+        }
+    }

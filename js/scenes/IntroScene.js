@@ -80,6 +80,8 @@ export class IntroScene extends BaseScene {
       y >= settingsButtonY &&
       y <= settingsButtonY + buttonHeight
     ) {
+      const settings = document.querySelector(".settings");
+      settings.classList.add("active");
       StateManager.changeState("settings"); // Go to Settings Scene
     }
   }

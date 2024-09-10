@@ -50,11 +50,9 @@ export class SettingsScene extends BaseScene {
   }
 
   handleInput(x, y) {
-    console.log("Am dat click aicisa");
-    console.log(x, y);
-
     // Get canvas dimensions
     const canvas = document.getElementById("canvas1");
+
     const width = canvas.width;
     const height = canvas.height;
 

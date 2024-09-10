@@ -9,6 +9,8 @@ import { StateManager } from "./StateManager.js";
 window.addEventListener("load", function () {
   const audio = document.getElementById("background-music");
 
+  const settingsCloseBtn = document.querySelector(".settings__close-btn");
+  settingsCloseBtn.addEventListener("click", handleClose);
   // initializing canvas
   const canvas = document.getElementById("canvas1");
   const context = canvas.getContext("2d"); //canvas rendering context
@@ -35,6 +37,12 @@ window.addEventListener("load", function () {
       scenes[StateManager.getState()].handleInput(x, y);
     }
   });
+
+  function handleClose() {
+    const settings = document.querySelector(".settings");
+    settings.classList.remove("active");
+    StateManager.changeState("intro");
+  }
 
   function gameLoop() {
     if (scenes[StateManager.getState()]) {

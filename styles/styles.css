@@ -15,6 +15,10 @@
     --box-shadow-honey: 0 4px 8px rgba(255, 204, 0, 0.5), 0 8px 16px rgba(255, 204, 0, 0.3);
 }
 
+html{
+    overflow: hidden;
+}
+
 #canvas1{
     border: 5px solid var(--black);
     position: absolute;
@@ -43,37 +47,6 @@
 #spring-bg,#summer-bg,#autumn-bg,#winter-bg{
     display: none;
 }
-
-
-.settings{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 2;
- 
-    color: white;
-    padding: 6rem;
-    background: url('../assets/backgrounds/spring.png') ;
-    background-repeat: no-repeat;
-    background-position: top;
-    &.active{
-        display: block;
-    }
-
-    .settings__bee-queen{
-        max-width:500px;
-        max-height:500px;
-        min-height: 250px;
-        min-width: 250px;
-        position: absolute;
-        right: 5%;
-        animation: bounce infinite linear 5s;
-    }
-}
-
-
 
 /* .player__name{
     display: flex;
