@@ -75,7 +75,6 @@ label,input{
     background-size: cover;
     border: none;
     box-shadow: var(--box-shadow-honey);
-    color: var(--secondary);
     font-family: var(--font-primary);
     font-size: 24px;
     

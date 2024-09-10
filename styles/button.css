@@ -1,26 +1,12 @@
-/* .button{
+.button{
+    display: none;
     position: absolute;
-    padding: 1rem 3rem;
+    padding: 2rem 4rem;
     cursor: pointer;
     background-color: var(--primary);
     color: rgb(0, 0, 0); 
     box-shadow: 0 0 10px var(--black);
-    
 }
-.menu-button{
-    width: 10px;
-    height: 16px;
-    top: 2%;
-    right: 2%;
-    background: url('../assets/menu-button.png'), var(--primary);
-    background-size: contain;
-    transition: all 0.3s ease-in;
-}
-
-.menu-button:hover{
-    transform: scale(1.03);
-}
-
 
 .hit-button{
     bottom: 10%;
@@ -38,8 +24,8 @@
 
 .hit-button:hover{
     transform: scale(1.04);
-} */
+}
 
-button{
-    display: none;
+.active{
+    display: block;
 }

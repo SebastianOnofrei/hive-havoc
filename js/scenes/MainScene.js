@@ -17,14 +17,15 @@ export class MainScene extends BaseScene {
     */
     const width = ctx.canvas.width;
     const height = ctx.canvas.height;
-
     const playerNameContainer = document.querySelector(
       ".player__name-container"
     );
     const playerName = document.querySelector("#player-name");
     playerNameContainer.textContent = playerName.value;
-
     playerNameContainer.classList.add("active");
+
+    const hitButton = document.querySelector(".hit-button");
+    hitButton.classList.add("active");
 
     // Define proportions for text and buttons
     const buttonWidth = width * 0.25;
@@ -35,8 +36,6 @@ export class MainScene extends BaseScene {
 
     // individual sprites (only when one type remaining on each)
     const autumnBg = document.getElementById("autumn-bg");
-    const workerBee = document.getElementById("worker-bee");
-    const droneBee = document.getElementById("drone-bee");
     const queenBee = document.getElementById("queen-bee");
 
     // swarm sprites
@@ -47,9 +46,9 @@ export class MainScene extends BaseScene {
     backgroundImage.src = autumnBg.src;
     // Draw new background
     ctx.drawImage(backgroundImage, 0, 0, width, height);
-    ctx.drawImage(workerBeesSwarm, 200, 200, 150, 150);
-    ctx.drawImage(queenBee, 300, 100, 150, 150);
-    ctx.drawImage(droneBeesSwarm, 400, 200, 150, 150);
+    ctx.drawImage(workerBeesSwarm, 100, 200, 250, 250);
+    ctx.drawImage(queenBee, 300, 100, 250, 250);
+    ctx.drawImage(droneBeesSwarm, 600, 200, 250, 250);
   }
 
   handleInput(x, y) {

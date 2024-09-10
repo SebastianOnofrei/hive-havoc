@@ -27,12 +27,20 @@ export class IntroScene extends BaseScene {
 
     // hive bg
     const honeyBg = document.getElementById("honey-bg");
+    const workerBee = document.getElementById("worker-bee");
+    const droneBee = document.getElementById("drone-bee");
+    const droneBeesSwarm = document.getElementById("drone-bees-swarm");
+    const workerBeesSwarm = document.getElementById("worker-bees-swarm");
 
     let backgroundImage = new Image();
     backgroundImage.src = honeyBg.src;
     ctx.drawImage(backgroundImage, 0, 0, width, height);
+    ctx.drawImage(workerBee, width * 0.05, 20, 160, 160);
+    ctx.drawImage(droneBee, width * 0.8, 20, 160, 160);
+    ctx.drawImage(droneBeesSwarm, width * 0.15, height * 0.6, 260, 260);
+    ctx.drawImage(workerBeesSwarm, width * 0.58, height * 0.6, 260, 260);
 
-    ctx.font = "72px Segoe Script";
+    ctx.font = "60px Segoe Script";
     ctx.fillStyle = "black";
     ctx.fillText("HIVE HAVOC", width * 0.3, height * 0.15);
 
