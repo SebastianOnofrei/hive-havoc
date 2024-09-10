@@ -17,11 +17,15 @@
 
 html{
     overflow: hidden;
-    cursor: url("/assets/honey_cursor.cur"),default;
+    cursor: url("/assets/cursor.cur"),default;
 }
 
 body{
     background-color: black;
+}
+
+label,input{
+    cursor: url("/assets/cursor.cur"),default;
 }
 
 #canvas1{

@@ -8,6 +8,7 @@
     <meta name="keywords" content="Hive Havoc, JavaScript game, bee game, browser game, HTML5 game">
     <meta name="author" content="Sebastian Onofrei">
     <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="icon" type="image/x-icon" href="./assets/honeycomb.png">
     <title>Hive Havoc</title>
 </head>
 <body>
@@ -17,12 +18,20 @@
     <div class="player__name-container"></div>
     <div class="settings"> 
         <div class="settings__close-btn"></div>
-        <h1>Settings</h1>
+        
         <img class="settings__bee-queen" src="./assets/sprites/queen-bee.svg" alt="settings bee queen" >
         <div class="settings__options">
-            <input type="text" placeholder="PlayerName" id="player-name">
-            <!-- asta cu sunetul. -->
-            <input type="checkbox" id="music-toggle">
+            <h1>Settings</h1>
+            <div class="settings__player-name"> 
+                <label for="">Player Name</label>
+                <input type="text" placeholder="PlayerName" id="player-name">
+            </div>
+            <div class="settings__sound"> 
+                <label>
+                    <span>Mute sound</span>
+                    <input type="checkbox" id="sound-checkbox">
+                </label>
+            </div>
         </div>
     </div>
     
@@ -30,6 +39,7 @@
     <button class="button menu-button"></button>
     <!-- I load here all the assets I need in JavaScript -->
     <!-- loading sounds -->
+     <audio src="./assets/sounds/main-menu-song.wav" loop></audio>
     <!-- loading backgrounds -->
     <img id="spring-bg" src="./assets/backgrounds/spring.png" alt="spring background">
     <img id="summer-bg" src="./assets/backgrounds/summer.png" alt="summer background">
