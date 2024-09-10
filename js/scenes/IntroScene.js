@@ -21,27 +21,36 @@ export class IntroScene extends BaseScene {
     // Define proportions for text and buttons
     const buttonWidth = width * 0.25;
     const buttonHeight = height * 0.07;
-    const buttonX = width * 0.125;
-    const playButtonY = height * 0.25;
+    const buttonX = width * 0.38;
+    const playButtonY = height * 0.3;
     const settingsButtonY = height * 0.4;
 
-    ctx.font = "30px Arial";
-    ctx.fillText("Welcome to the Game", width * 0.25, height * 0.1);
+    // hive bg
+    const honeyBg = document.getElementById("honey-bg");
 
-    // Draw "Play Now" button
-    ctx.fillStyle = "yellow";
-    ctx.fillRect(buttonX, playButtonY, buttonWidth, buttonHeight);
+    let backgroundImage = new Image();
+    backgroundImage.src = honeyBg.src;
+    ctx.drawImage(backgroundImage, 0, 0, width, height);
+
+    ctx.font = "72px Segoe Script";
     ctx.fillStyle = "black";
+    ctx.fillText("HIVE HAVOC", width * 0.3, height * 0.15);
+
+    ctx.font = "42px Gabriola";
+    // Draw "Play Now" button
+    ctx.fillStyle = "orangered";
+    ctx.fillRect(buttonX, playButtonY, buttonWidth, buttonHeight);
+    ctx.fillStyle = "white";
     ctx.fillText(
-      "Play Now",
+      "Play",
       buttonX + buttonWidth * 0.1,
       playButtonY + buttonHeight * 0.7
     );
 
     // Draw "Settings" button
-    ctx.fillStyle = "yellow";
+    ctx.fillStyle = "orangered";
     ctx.fillRect(buttonX, settingsButtonY, buttonWidth, buttonHeight);
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "white";
     ctx.fillText(
       "Settings",
       buttonX + buttonWidth * 0.1,
@@ -61,8 +70,8 @@ export class IntroScene extends BaseScene {
     // Define proportions for buttons
     const buttonWidth = width * 0.25;
     const buttonHeight = height * 0.07;
-    const buttonX = width * 0.125;
-    const playButtonY = height * 0.25;
+    const buttonX = width * 0.38;
+    const playButtonY = height * 0.3;
     const settingsButtonY = height * 0.4;
 
     if (

@@ -7,37 +7,62 @@ import { SettingsScene } from "./scenes/SettingsScene.js";
 import { StateManager } from "./StateManager.js";
 
 window.addEventListener("load", function () {
-  const audio = document.getElementById("background-music");
-
-  const settingsCloseBtn = document.querySelector(".settings__close-btn");
-  settingsCloseBtn.addEventListener("click", handleClose);
   // initializing canvas
   const canvas = document.getElementById("canvas1");
   const context = canvas.getContext("2d"); //canvas rendering context
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
-  // Manage global state
-  let currentState = "intro"; // Initial state
+  const settingsCloseBtn = document.querySelector(".settings__close-btn");
   const scenes = {}; // Object to store scene instances
 
-  // Initialize scenes
-  scenes["intro"] = new IntroScene();
-  scenes["main"] = new MainScene();
-  scenes["gameover"] = new GameOverScene();
-  scenes["resume"] = new ResumeScene();
-  scenes["settings"] = new SettingsScene();
+  initializeCanvas();
+  initializeScenes();
+  registerEventListeners();
+  // Start the game loop
+  gameLoop();
 
-  // Handle user input
-  canvas.addEventListener("click", function (event) {
+  function initializeCanvas() {
+    resizeCanvas(); // Set initial size
+    window.addEventListener("resize", resizeCanvas);
+  }
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  // Initialize scenes
+  function initializeScenes() {
+    scenes["intro"] = new IntroScene();
+    scenes["main"] = new MainScene();
+    scenes["gameover"] = new GameOverScene();
+    scenes["resume"] = new ResumeScene();
+    scenes["settings"] = new SettingsScene();
+  }
+
+  function registerEventListeners() {
+    // Handle settings close button
+    settingsCloseBtn.addEventListener("click", handleClose);
+
+    // Handle user input on the canvas
+    canvas.addEventListener("click", handleCanvasClick);
+
+    // Listen for fullscreen and resize changes
+    document.addEventListener("fullscreenchange", resizeCanvas);
+    document.addEventListener("webkitfullscreenchange", resizeCanvas);
+    document.addEventListener("mozfullscreenchange", resizeCanvas);
+    document.addEventListener("MSFullscreenChange", resizeCanvas);
+    window.addEventListener("resize", resizeCanvas);
+  }
+
+  function handleCanvasClick(event) {
     const x = event.offsetX;
     const y = event.offsetY;
-
-    if (scenes[StateManager.getState()]) {
-      scenes[StateManager.getState()].handleInput(x, y);
+    const currentScene = scenes[StateManager.getState()];
+    if (currentScene) {
+      currentScene.handleInput(x, y);
     }
-  });
+  }
 
+  //closing the settings menu
   function handleClose() {
     const settings = document.querySelector(".settings");
     settings.classList.remove("active");
@@ -48,38 +73,6 @@ window.addEventListener("load", function () {
     if (scenes[StateManager.getState()]) {
       scenes[StateManager.getState()].draw(context);
     }
-
     requestAnimationFrame(gameLoop); // Continue the loop
   }
-
-  // Start the game loop
-  gameLoop();
-  // audio.play();
 });
-
-// dom elements
-// const hitBtn = document.querySelector(".hit-button");
-// const playerName = document.querySelector(".player__name");
-// // aici o sa fie Player.name
-// playerName.textContent = "Player.name";
-
-// // event listeners
-// hitBtn.addEventListener("click", (e) => {
-//   console.log(e);
-//   console.log("Pressed button");
-//   // implementare random hitting of an enemy
-// });
-// // Loading music
-// const audio = document.getElementById("background-music");
-
-//   // Increment index and loop back if needed - used for the background changer
-//   currentIndex = (currentIndex + 1) % backgrounds.length;
-// }
-
-// // Initial call to display the first background
-// changeBackground();
-
-// // Set Interval to change background every 8 seconds
-// // setInterval(changeBackground, 30000);
-
-// // audio.play();

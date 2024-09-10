@@ -17,14 +17,22 @@
 
 html{
     overflow: hidden;
+    cursor: url("/assets/honey_cursor.cur"),default;
+}
+
+body{
+    background-color: black;
 }
 
 #canvas1{
-    border: 5px solid var(--black);
+     
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
+    width: 100vw;
+    height: 100vh;
+    /* cursor: url("/assets/custom_cursor.png"),default; */
     /* so that the canvas will scale down */
 }
 
@@ -44,7 +52,7 @@ html{
     height: 150px;
 }
 
-#spring-bg,#summer-bg,#autumn-bg,#winter-bg{
+#spring-bg,#summer-bg,#autumn-bg,#winter-bg,#honey-bg{
     display: none;
 }
 
