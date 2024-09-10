@@ -60,8 +60,8 @@ label,input{
     display: none;
 }
 
-/* .player__name{
-    display: flex;
+.player__name-container{
+    display: none;
     justify-content: center;
     align-items: center;
     position: absolute;
@@ -79,4 +79,7 @@ label,input{
     font-family: var(--font-primary);
     font-size: 24px;
     
-} */
+    &.active{
+        display: flex;
+    }
+}

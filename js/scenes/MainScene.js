@@ -18,6 +18,14 @@ export class MainScene extends BaseScene {
     const width = ctx.canvas.width;
     const height = ctx.canvas.height;
 
+    const playerNameContainer = document.querySelector(
+      ".player__name-container"
+    );
+    const playerName = document.querySelector("#player-name");
+    playerNameContainer.textContent = playerName.value;
+
+    playerNameContainer.classList.add("active");
+
     // Define proportions for text and buttons
     const buttonWidth = width * 0.25;
     const buttonHeight = height * 0.07;
@@ -42,29 +50,6 @@ export class MainScene extends BaseScene {
     ctx.drawImage(workerBeesSwarm, 200, 200, 150, 150);
     ctx.drawImage(queenBee, 300, 100, 150, 150);
     ctx.drawImage(droneBeesSwarm, 400, 200, 150, 150);
-
-    // ctx.font = "30px Arial";
-    // ctx.fillText("Main Screen", width * 0.25, height * 0.1);
-
-    // // Draw "Play Now" button
-    // ctx.fillStyle = "yellow";
-    // ctx.fillRect(buttonX, playButtonY, buttonWidth, buttonHeight);
-    // ctx.fillStyle = "black";
-    // ctx.fillText(
-    //   "Play Now",
-    //   buttonX + buttonWidth * 0.1,
-    //   playButtonY + buttonHeight * 0.7
-    // );
-
-    // // Draw "Settings" button
-    // ctx.fillStyle = "yellow";
-    // ctx.fillRect(buttonX, settingsButtonY, buttonWidth, buttonHeight);
-    // ctx.fillStyle = "black";
-    // ctx.fillText(
-    //   "Settings",
-    //   buttonX + buttonWidth * 0.1,
-    //   settingsButtonY + buttonHeight * 0.7
-    // );
   }
 
   handleInput(x, y) {
@@ -73,6 +58,7 @@ export class MainScene extends BaseScene {
 
     // Get canvas dimensions
     const canvas = document.getElementById("canvas1");
+
     const width = canvas.width;
     const height = canvas.height;
 
