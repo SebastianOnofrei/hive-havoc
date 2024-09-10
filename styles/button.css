@@ -10,7 +10,7 @@
 
 .hit-button{
     bottom: 10%;
-    left: 50%;
+    left: 40%;
     transition: all 0.3s ease-in;
     box-shadow: var(--box-shadow-honey);
     border-radius: 2rem;

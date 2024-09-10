@@ -4,22 +4,50 @@ import { Drone } from "./Drone.js";
 
 export class Swarm {
   // we could have a custom swarm, more than 13 bees
-  constructor(workerBees = 5, droneBees = 8) {
+  constructor(workerBees = 1, droneBees = 1) {
     this.queen = new Queen();
     this.workers = Array.from({ length: workerBees }, () => new Worker());
     this.drones = Array.from({ length: droneBees }, () => new Drone());
-    this.maxHealth = this.getMaxHealth();
+    this.maxHealth = this.getHealth();
     this.health = this.maxHealth;
     this.status = "green";
   }
 
-  getMaxHealth() {
-    const maxHealth =
-      this.queen.health +
-      this.workers.length * this.workers[0].health +
-      this.drones.length * this.drones[0].health;
+  getHealth() {
+    // functie de reduce.
+    let queenHealth = this.queen.health;
+    let workersHealth = 0;
+    let dronesHealth = 0;
+    // aici trebe un check
+    this.workers.map((worker) => {
+      workersHealth += worker.health;
+    });
+    this.drones.map((drone) => {
+      dronesHealth += drone.health;
+    });
 
-    return maxHealth;
+    let swarmHealth = queenHealth + workersHealth + dronesHealth;
+
+    if (
+      this.health < 0.8 * this.maxHealth &&
+      this.health > 0.5 * this.maxHealth
+    ) {
+      this.setSwarmStatus("yellow");
+    }
+
+    if (
+      this.health < 0.5 * this.maxHealth &&
+      this.health > 0.3 * this.maxHealth
+    ) {
+      this.setSwarmStatus("orange");
+    }
+
+    if (this.health < 0.3 * this.maxHealth) {
+      this.setSwarmStatus("red");
+    }
+
+    console.log(swarmHealth);
+    return swarmHealth;
   }
 
   getAllBees() {
@@ -27,7 +55,7 @@ export class Swarm {
   }
 
   getAliveBees() {
-    return this.getAllBees().filter((bee) => !bee.isDead());
+    return this.getAllBees().filter((bee) => bee.health > 0);
   }
 
   isGameOver() {
@@ -36,16 +64,22 @@ export class Swarm {
 
   hitRandomBee() {
     const aliveBees = this.getAliveBees();
-    const randomBee = aliveBees[Math.floor(Math.random() * aliveBees.length)];
+    const randomBeeIndex = Math.floor(Math.random() * aliveBees.length);
+    const randomBee = aliveBees[randomBeeIndex];
 
     const damage = this.getDamageForBee(randomBee);
     randomBee.takeDamage(damage);
 
-    if (this.queen.isDead()) {
-      this.getAllBees().forEach((bee) => bee.takeDamage(bee.health)); // All bees die if the Queen is dead
+    if (this.queen.health <= 0) {
+      // mor toti deodata daca moare regina
+      console.warn("a murit regina");
     }
 
-    return { bee: randomBee, damage };
+    // aici trebuie cumva vazut mereu care sunt alive bees.
+    console.log(aliveBees);
+
+    this.health = this.getHealth();
+    return this.health;
   }
 
   getDamageForBee(bee) {
@@ -56,8 +90,14 @@ export class Swarm {
         return 10;
       case "Drone":
         return 12;
-      default:
-        return 0;
     }
+  }
+
+  setSwarmStatus(status) {
+    this.status = status;
+  }
+
+  getSwarmStatus() {
+    return this.status;
   }
 }

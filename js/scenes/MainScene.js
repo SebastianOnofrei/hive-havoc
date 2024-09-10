@@ -8,44 +8,89 @@ export class MainScene extends BaseScene {
     this.swarm = new Swarm();
     console.table(this.swarm);
     console.log(this.swarm.workers);
+    this.hitButton = document.querySelector(".hit-button");
+    this.hitButton.addEventListener("click", () => {
+      // aici bag in localStorage . ce game data pai this.swarm.
+      localStorage.setItem("gameData", JSON.stringify(this.swarm));
+      this.randomAttackSwarm();
+    });
+    this.swarmHealthBar = document.querySelector(".health-bar");
+    this.playerNameContainer = document.querySelector(
+      ".player__name-container"
+    );
   }
 
   randomAttackSwarm() {
-    console.log("YOU Attacked the swarm");
-    console.log("you hit ", this.swarm.hitRandomBee());
+    // aici e logica in care atac.
+    const swarmHealth = this.swarm.hitRandomBee();
+    // ok deci aici atac. vreau sa imi dea ca raspuns hpul lor
+    console.log(swarmHealth);
   }
 
   showPlayerName() {
-    const playerNameContainer = document.querySelector(
-      ".player__name-container"
-    );
     const playerName = document.querySelector("#player-name");
-    playerNameContainer.textContent = playerName.value;
-    playerNameContainer.classList.add("active");
+    this.playerNameContainer.textContent = playerName.value;
+    this.playerNameContainer.classList.add("active");
   }
 
   showHitButton() {
-    const hitButton = document.querySelector(".hit-button");
-    hitButton.classList.add("active");
-    hitButton.addEventListener("click", this.randomAttackSwarm);
+    this.hitButton.classList.add("active");
   }
 
   showHealthBar() {
-    const swarmHealthBar = document.querySelector(".health-bar");
-    swarmHealthBar.classList.add("active");
+    this.swarmHealthBar.classList.add("active");
+    this.changeHealthBar();
+  }
+
+  hideHealthBar() {
+    this.swarmHealthBar.classList.remove("active");
+  }
+
+  hideHitButton() {
+    this.hitButton.classList.remove("active");
+  }
+
+  hidePlayerName() {
+    this.playerNameContainer.classList.remove("active");
   }
 
   changeHealthBar() {
-    const lifepoints = document.querySelector(".health-bar__lifepoints");
-    lifepoints.textContent = `${this.swarm.health} / ${this.swarm.maxHealth}`;
+    const lifepointsText = document.querySelector(".health-bar__lifepoints");
+    const swarmHP = this.swarm.health;
+    const swarmMaxHP = this.swarm.maxHealth;
+    const status = this.swarm.getSwarmStatus();
+    lifepointsText.textContent = `${swarmHP} / ${swarmMaxHP}`;
+
+    if (status === "yellow") {
+      this.swarmHealthBar.classList.add("yellow");
+    } else if (status === "orange") {
+      this.swarmHealthBar.classList.remove("yellow");
+      this.swarmHealthBar.classList.add("orange");
+    } else if (status === "red") {
+      this.swarmHealthBar.classList.remove("orange");
+      this.swarmHealthBar.classList.add("red");
+    } else {
+      this.swarmHealthBar.classList.remove("red");
+      this.swarmHealthBar.classList.add("green");
+    }
   }
 
   draw(ctx) {
+    if (this.swarm.health <= 0) {
+      this.hideHealthBar();
+      this.hideHitButton();
+      this.hidePlayerName();
+      // recreating the swarm for future play
+      this.swarm = new Swarm();
+      StateManager.changeState("intro");
+      return;
+    }
+
     super.draw(ctx);
     this.showPlayerName();
     this.showHitButton();
     this.showHealthBar();
-    this.changeHealthBar();
+
     const width = ctx.canvas.width;
     const height = ctx.canvas.height;
 
@@ -82,8 +127,6 @@ export class MainScene extends BaseScene {
     const playButtonY = height * 0.25;
     const settingsButtonY = height * 0.4;
 
-    //  nu mai am treaba cu astea. daca apas pe enemy, sa mi se faca un div sa fie vizible si cand dau pe x sa fie invisible
-    //  Ce date ma intereseaza?  vezi sticky note.
     if (
       x >= buttonX &&
       x <= buttonX + buttonWidth &&
