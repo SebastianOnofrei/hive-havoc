@@ -4,7 +4,7 @@ import { MainScene } from "./scenes/MainScene.js";
 import { GameOverScene } from "./scenes/GameOverScene.js";
 import { ResumeScene } from "./scenes/ResumeScene.js";
 import { SettingsScene } from "./scenes/SettingsScene.js";
-import { StateManager } from "./StateManager.js";
+import { StateManager } from "./core/StateManager.js";
 
 window.addEventListener("load", function () {
   // initializing canvas

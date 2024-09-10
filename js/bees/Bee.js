@@ -8,6 +8,7 @@ export class Bee {
 
   takeDamage(damage) {
     this.health = Math.max(0, this.health - damage);
+    this.setHealthStatus();
   }
 
   isDead() {

@@ -3,10 +3,23 @@ import { Worker } from "./Worker.js";
 import { Drone } from "./Drone.js";
 
 export class Swarm {
-  constructor() {
+  // we could have a custom swarm, more than 13 bees
+  constructor(workerBees = 5, droneBees = 8) {
     this.queen = new Queen();
-    this.workers = Array.from({ length: 5 }, () => new Worker());
-    this.drones = Array.from({ length: 8 }, () => new Drone());
+    this.workers = Array.from({ length: workerBees }, () => new Worker());
+    this.drones = Array.from({ length: droneBees }, () => new Drone());
+    this.maxHealth = this.getMaxHealth();
+    this.health = this.maxHealth;
+    this.status = "green";
+  }
+
+  getMaxHealth() {
+    const maxHealth =
+      this.queen.health +
+      this.workers.length * this.workers[0].health +
+      this.drones.length * this.drones[0].health;
+
+    return maxHealth;
   }
 
   getAllBees() {

@@ -1,54 +1,68 @@
 import { BaseScene } from "./BaseScene.js";
-import { StateManager } from "../StateManager.js";
-
+import { StateManager } from "../core/StateManager.js";
+import { Swarm } from "../bees/Swarm.js";
 export class MainScene extends BaseScene {
   constructor() {
-    super("main"); // Call the constructor of the base class
+    super("main");
+    // aici implementez logica
+    this.swarm = new Swarm();
+    console.table(this.swarm);
+    console.log(this.swarm.workers);
   }
 
-  draw(ctx) {
-    // Call the base class draw method to clear the canvas
-    super.draw(ctx);
+  randomAttackSwarm() {
+    console.log("YOU Attacked the swarm");
+    console.log("you hit ", this.swarm.hitRandomBee());
+  }
 
-    /*  
-      We get the canvas dimensions so that we can create coordinates
-      and elements on the canvas, whose sizes are relative to the canvas sizes
-      and not to the viewport - due to resizing of the browser.
-    */
-    const width = ctx.canvas.width;
-    const height = ctx.canvas.height;
+  showPlayerName() {
     const playerNameContainer = document.querySelector(
       ".player__name-container"
     );
     const playerName = document.querySelector("#player-name");
     playerNameContainer.textContent = playerName.value;
     playerNameContainer.classList.add("active");
+  }
 
+  showHitButton() {
     const hitButton = document.querySelector(".hit-button");
     hitButton.classList.add("active");
+    hitButton.addEventListener("click", this.randomAttackSwarm);
+  }
 
-    // Define proportions for text and buttons
-    const buttonWidth = width * 0.25;
-    const buttonHeight = height * 0.07;
-    const buttonX = width * 0.125;
-    const playButtonY = height * 0.25;
-    const settingsButtonY = height * 0.4;
+  showHealthBar() {
+    const swarmHealthBar = document.querySelector(".health-bar");
+    swarmHealthBar.classList.add("active");
+  }
 
-    // individual sprites (only when one type remaining on each)
+  changeHealthBar() {
+    const lifepoints = document.querySelector(".health-bar__lifepoints");
+    lifepoints.textContent = `${this.swarm.health} / ${this.swarm.maxHealth}`;
+  }
+
+  draw(ctx) {
+    super.draw(ctx);
+    this.showPlayerName();
+    this.showHitButton();
+    this.showHealthBar();
+    this.changeHealthBar();
+    const width = ctx.canvas.width;
+    const height = ctx.canvas.height;
+
+    // background of scene
     const autumnBg = document.getElementById("autumn-bg");
-    const queenBee = document.getElementById("queen-bee");
-
+    let backgroundImage = new Image();
+    backgroundImage.src = autumnBg.src;
     // swarm sprites
+    const queenBee = document.getElementById("queen-bee");
     const droneBeesSwarm = document.getElementById("drone-bees-swarm");
     const workerBeesSwarm = document.getElementById("worker-bees-swarm");
 
-    let backgroundImage = new Image();
-    backgroundImage.src = autumnBg.src;
     // Draw new background
     ctx.drawImage(backgroundImage, 0, 0, width, height);
-    ctx.drawImage(workerBeesSwarm, 100, 200, 250, 250);
-    ctx.drawImage(queenBee, 300, 100, 250, 250);
-    ctx.drawImage(droneBeesSwarm, 600, 200, 250, 250);
+    ctx.drawImage(workerBeesSwarm, 100, 400, 250, 250);
+    ctx.drawImage(queenBee, 300, 300, 250, 250);
+    ctx.drawImage(droneBeesSwarm, 500, 400, 250, 250);
   }
 
   handleInput(x, y) {

@@ -1,9 +1,15 @@
 .health-bar{
     display: none;
+    position: absolute;
+    top: 10%;
+    left: 10%;
     height: 2rem;
-    width: 10rem;
-    /* default color */
-    background-color: gray;
+    padding: 1.25rem 0;
+    width: 80%;
+    box-shadow: var(--box-shadow-honey);
+    /* animation: tremble 1s ease-in-out infinite; */
+    /* green is default color */
+    background-color: rgba(70, 185, 24, 0.911);
     &.red{
         background-color: red;
     }
@@ -11,17 +17,12 @@
     &.orange{
         background-color: orange;
     }
-
-    &.green{
-        background-color: greenyellow;
+    &.yellow{
+        background-color: rgb(250, 228, 30);
     }
 
-    &.yellow{
-        background-color: yellow;
+    h2{
+        font-family: "Gabriola";
     }
 }
-
-
-
-
 

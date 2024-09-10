@@ -82,3 +82,9 @@ label,input{
         display: flex;
     }
 }
+
+.active{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

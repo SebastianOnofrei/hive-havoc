@@ -1,5 +1,5 @@
 import { BaseScene } from "./BaseScene.js";
-import { StateManager } from "../StateManager.js";
+import { StateManager } from "../core/StateManager.js";
 
 export class GameOverScene extends BaseScene {
   constructor() {
