@@ -26,6 +26,20 @@
     transform: scale(1.04);
 }
 
+.save-name__button{
+    padding: .75rem;
+    min-width: 100px;
+    font-family: var(--font-primary);
+    border: none;
+    background-color: rgb(13, 138, 96);
+    transition:all 0.3s ease-in;
+    color: white;
+}
+
+.save-name__button:hover{
+    transform: scale(1.04);
+}
+
 .active{
     display: block;
 }

@@ -10,10 +10,7 @@ window.addEventListener("load", function () {
   // initializing canvas
   const canvas = document.getElementById("canvas1");
   const context = canvas.getContext("2d"); //canvas rendering context
-  const settingsCloseBtn = document.querySelector(".settings__close-btn");
-  const soundCheckbox = document.querySelector("#sound-checkbox");
   const audio = document.querySelector("audio");
-  audio.volume = 0.8;
   const scenes = {}; // Object to store scene instances
 
   audio.play();
@@ -43,17 +40,6 @@ window.addEventListener("load", function () {
   }
 
   function registerEventListeners() {
-    // Handle settings close button
-    settingsCloseBtn.addEventListener("click", handleClose);
-
-    // Handle settings mute button
-    soundCheckbox.addEventListener("click", () => {
-      if (soundCheckbox.checked) {
-        muteSound();
-      } else {
-        unMuteSound();
-      }
-    });
     // Handle user input on the canvas
     canvas.addEventListener("click", handleCanvasClick);
 
@@ -72,13 +58,6 @@ window.addEventListener("load", function () {
     if (currentScene) {
       currentScene.handleInput(x, y);
     }
-  }
-
-  //closing the settings menu
-  function handleClose() {
-    const settings = document.querySelector(".settings");
-    settings.classList.remove("active");
-    StateManager.changeState("intro");
   }
 
   function muteSound() {

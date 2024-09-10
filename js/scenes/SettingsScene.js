@@ -4,81 +4,42 @@ import { StateManager } from "../core/StateManager.js";
 export class SettingsScene extends BaseScene {
   constructor() {
     super("settings"); // Call the constructor of the base class
+    this.toastNotification = document.querySelector(
+      ".settings__toast-notification"
+    );
+    this.saveButton = document.querySelector(".save-name__button");
+    this.settingsCloseBtn = document.querySelector(".settings__close-btn");
+    this.soundCheckbox = document.querySelector("#sound-checkbox");
+    this.audio = document.querySelector("audio");
+
+    this.registerEventListeners();
   }
 
-  draw(ctx) {
-    super.draw(ctx); // Call the base class draw method to clear the canvas
+  registerEventListeners() {
+    // Handle settings close button
+    this.settingsCloseBtn.addEventListener("click", this.handleClose);
 
-    /*  
-      We get the canvas dimensions so that we can create coordinates
-      and elements on the canvas, whose sizes are relative to the canvas sizes
-      and not to the viewport - due to resizing of the browser.
-    */
+    // Handle settings mute button
+    this.soundCheckbox.addEventListener("click", () => {
+      if (this.soundCheckbox.checked) {
+        muteSound();
+      } else {
+        unMuteSound();
+      }
+    });
 
-    const width = ctx.canvas.width;
-    const height = ctx.canvas.height;
-
-    // Define proportions for text and buttons
-    const buttonWidth = width * 0.25;
-    const buttonHeight = height * 0.07;
-    const buttonX = width * 0.125;
-    const playButtonY = height * 0.25;
-    const settingsButtonY = height * 0.4;
-
-    ctx.font = "30px Arial";
-    ctx.fillText("Welcome to the Settings", width * 0.25, height * 0.1);
-
-    // Draw "Play Now" button
-    ctx.fillStyle = "yellow";
-    ctx.fillRect(buttonX, playButtonY, buttonWidth, buttonHeight);
-    ctx.fillStyle = "black";
-    ctx.fillText(
-      "Play Now",
-      buttonX + buttonWidth * 0.1,
-      playButtonY + buttonHeight * 0.7
-    );
-
-    // Draw "Settings" button
-    ctx.fillStyle = "yellow";
-    ctx.fillRect(buttonX, settingsButtonY, buttonWidth, buttonHeight);
-    ctx.fillStyle = "black";
-    ctx.fillText(
-      "Settings",
-      buttonX + buttonWidth * 0.1,
-      settingsButtonY + buttonHeight * 0.7
-    );
+    this.saveButton.addEventListener("click", () => {
+      this.toastNotification.classList.add("show");
+      setTimeout(() => {
+        this.toastNotification.classList.remove("show");
+      }, 3000);
+    });
   }
 
-  handleInput(x, y) {
-    // Get canvas dimensions
-    const canvas = document.getElementById("canvas1");
-
-    const width = canvas.width;
-    const height = canvas.height;
-
-    // Define proportions for buttons
-    const buttonWidth = width * 0.25;
-    const buttonHeight = height * 0.07;
-    const buttonX = width * 0.125;
-    const playButtonY = height * 0.25;
-    const settingsButtonY = height * 0.4;
-
-    if (
-      x >= buttonX &&
-      x <= buttonX + buttonWidth &&
-      y >= playButtonY &&
-      y <= playButtonY + buttonHeight
-    ) {
-      StateManager.changeState(
-        localStorage.getItem("gameData") ? "resume" : "main"
-      ); // Go to Resume or Main Scene
-    } else if (
-      x >= buttonX &&
-      x <= buttonX + buttonWidth &&
-      y >= settingsButtonY &&
-      y <= settingsButtonY + buttonHeight
-    ) {
-      StateManager.changeState("settings"); // Go to Settings Scene
-    }
+  //closing the settings menu
+  handleClose() {
+    const settings = document.querySelector(".settings");
+    settings.classList.remove("active");
+    StateManager.changeState("intro");
   }
 }

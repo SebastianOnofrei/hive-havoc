@@ -24,7 +24,7 @@ body{
     background-color: black;
 }
 
-label,input{
+label,input,button{
     cursor: url("/assets/cursor.cur"),default;
 }
 
