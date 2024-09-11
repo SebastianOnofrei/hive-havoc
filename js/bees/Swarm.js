@@ -4,7 +4,7 @@ import { Drone } from "./Drone.js";
 
 export class Swarm {
   // we could have a custom swarm, more than 13 bees
-  constructor(workerBees = 1, droneBees = 1) {
+  constructor(workerBees = 5, droneBees = 8) {
     this.queen = new Queen();
     this.workers = Array.from({ length: workerBees }, () => new Worker());
     this.drones = Array.from({ length: droneBees }, () => new Drone());
@@ -27,17 +27,11 @@ export class Swarm {
 
     let swarmHealth = queenHealth + workersHealth + dronesHealth;
 
-    if (
-      this.health < 0.8 * this.maxHealth &&
-      this.health > 0.5 * this.maxHealth
-    ) {
+    if (this.health < 0.8 * this.maxHealth && this.health > 0.5 * this.maxHealth) {
       this.setSwarmStatus("yellow");
     }
 
-    if (
-      this.health < 0.5 * this.maxHealth &&
-      this.health > 0.3 * this.maxHealth
-    ) {
+    if (this.health < 0.5 * this.maxHealth && this.health > 0.3 * this.maxHealth) {
       this.setSwarmStatus("orange");
     }
 

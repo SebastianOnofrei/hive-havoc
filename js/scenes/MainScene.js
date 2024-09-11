@@ -50,13 +50,13 @@ export class MainScene extends BaseScene {
   updateBattleDetails() {
     // queen bee
     const queenInfo = this.swarm.queen;
-    this.queenInfoContainer.innerHTML = `${queenInfo.name} :  ${queenInfo.health} / <span style="color:greenyellow"> ${queenInfo.maxHealth} </span>`;
+    this.queenInfoContainer.innerHTML = `${queenInfo.name} :  ${queenInfo.health} / <span style="color:greenyellow"> ${queenInfo.maxHealth} HP</span>`;
 
     // worker bees.
     const workerBeesInfo = this.swarm.workers;
     let workerBessTemplate = ``;
     workerBeesInfo.map((bee) => {
-      workerBessTemplate += `${bee.name} :  ${bee.health} / <span style="color:greenyellow"> ${bee.maxHealth} </span>`;
+      workerBessTemplate += `<div class="bee-info">${bee.name} :  ${bee.health} / <span style="color:greenyellow"> ${bee.maxHealth} HP </span></div>`;
     });
     this.workersInfoContainer.innerHTML = workerBessTemplate;
 
@@ -64,7 +64,7 @@ export class MainScene extends BaseScene {
     const droneBeesInfo = this.swarm.drones;
     let droneBessTemplate = ``;
     droneBeesInfo.map((bee) => {
-      droneBessTemplate += `${bee.name} :  ${bee.health} / <span style="color:greenyellow"> ${bee.maxHealth} </span>`;
+      droneBessTemplate += `<div class="bee-info">${bee.name} :  ${bee.health} / <span style="color:greenyellow"> ${bee.maxHealth} HP </span></div>`;
     });
     this.dronesInfoContainer.innerHTML = droneBessTemplate;
   }
@@ -75,8 +75,8 @@ export class MainScene extends BaseScene {
     this.damageNotificationContainer.classList.add("show");
 
     setTimeout(() => {
-      this.hideDamageNotification;
-    }, 15000);
+      this.hideDamageNotification();
+    }, 2500);
   }
 
   hideDamageNotification() {

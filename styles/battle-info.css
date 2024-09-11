@@ -9,6 +9,7 @@
     white-space: nowrap;
     background-color: rgb(2, 2, 2);
     color: white;
+    border-radius: 2rem;
 
     &.active{
         display: flex; 
@@ -23,29 +24,37 @@
         &.active{
             display: flex; 
         }
-    
     }
  
     .battle__information--queen,.battle__information--workers,.battle__information--drones{
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 4rem;
+        gap: 2rem;
         width: 100%;  
-        border-right: 2px solid rgb(243, 177, 54);
+        /* border-right: 2px solid rgb(243, 177, 54); */
+
+        .bee-info{
+            font-size: 16px;
+            font-family: var(--font-primary);
+            padding:4px;
+        }
 
         img{
+            position: absolute;
+            bottom: 10%;
             padding: 1rem; 
             border-radius: 1rem;           
             width: 150px;
             height: 150px;
             background-color: rgba(24, 24, 24, 0.952);
-        
+            box-shadow: var(--box-shadow-honey);
         }
     }
 
     .battle__information--drones{
         border: none;
+        
     }
     
 }
@@ -63,7 +72,7 @@
     max-width: 300px;
     height: 50px;
     white-space: nowrap;
-    background-color: rgba(32, 12, 12, 0.959);
+    background-color: rgba(32, 12, 12, 0.897);
     color: white;
     font-family: var(--font-primary);
     font-size: 24px;
