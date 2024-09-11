@@ -21,10 +21,16 @@ export class MainScene extends BaseScene {
   }
 
   randomAttackSwarm() {
-    // aici e logica in care atac.
     const swarmHealth = this.swarm.hitRandomBee();
-    // ok deci aici atac. vreau sa imi dea ca raspuns hpul lor
+    this.swarmHealthBar.classList.add("tremble");
     console.log(swarmHealth);
+    setTimeout(() => {
+      this.swarmHealthBar.classList.remove("tremble");
+    }, 1000);
+  }
+
+  showDamage() {
+    // tre sa fac un div ,
   }
 
   showPlayerName() {

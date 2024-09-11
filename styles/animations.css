@@ -12,8 +12,12 @@
 
 @keyframes tremble {
     0% { transform: translateX(0); }
-    25% { transform: translateX(-1px); }
+    25% { transform: translateX(-10px); }
     50% { transform: translateY(1px); }
-    75% { transform: translateX(1px); }
+    75% { transform: translateX(10px); }
     100% { transform: translateX(0); }
+  }
+
+  .tremble{
+    animation: tremble ease-in 0.2s;
   }

@@ -76,9 +76,11 @@ export class Swarm {
 
     if (this.queen.health <= 0) {
       aliveBees.map((bee) => (bee.health = 0));
+
       localStorage.removeItem("gameData");
     }
-
+    console.table(this);
+    console.log(aliveBees);
     this.health = this.getHealth();
     return this.health;
   }
