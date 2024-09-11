@@ -14,11 +14,10 @@ export class Swarm {
   }
 
   getHealth() {
-    // functie de reduce.
     let queenHealth = this.queen.health;
     let workersHealth = 0;
     let dronesHealth = 0;
-    // aici trebe un check
+
     this.workers.map((worker) => {
       workersHealth += worker.health;
     });
@@ -67,16 +66,18 @@ export class Swarm {
     const randomBeeIndex = Math.floor(Math.random() * aliveBees.length);
     const randomBee = aliveBees[randomBeeIndex];
 
-    const damage = this.getDamageForBee(randomBee);
+    let damage = this.getDamageForBee(randomBee);
+
+    if (randomBee.health - damage <= 0) {
+      damage = randomBee.health;
+    }
+
     randomBee.takeDamage(damage);
 
     if (this.queen.health <= 0) {
-      // mor toti deodata daca moare regina
-      console.warn("a murit regina");
+      aliveBees.map((bee) => (bee.health = 0));
+      localStorage.removeItem("gameData");
     }
-
-    // aici trebuie cumva vazut mereu care sunt alive bees.
-    console.log(aliveBees);
 
     this.health = this.getHealth();
     return this.health;
