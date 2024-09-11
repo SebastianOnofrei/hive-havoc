@@ -1,4 +1,4 @@
-import { Bee } from "./Bee";
+import { Bee } from "./Bee.js";
 
 export class Drone extends Bee {
   constructor(health = 50, maxHealth = 50) {
