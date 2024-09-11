@@ -1,0 +1,23 @@
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes tremble {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateY(1px); }
+    75% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
+  }
+
+  .tremble{
+    animation: tremble ease-in 0.2s;
+  }

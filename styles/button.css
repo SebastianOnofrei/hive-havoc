@@ -1,0 +1,47 @@
+.button{
+    display: none;
+    position: absolute;
+    padding: 2rem 4rem;
+    cursor: pointer;
+    background-color: var(--primary);
+    color: rgb(0, 0, 0); 
+    box-shadow: 0 0 10px var(--black);
+    user-select: none;
+}
+
+.hit-button{
+    bottom: 10%;
+    left: 45%;
+    transition: all 0.3s ease-in;
+    box-shadow: var(--box-shadow-honey);
+    border-radius: 2rem;
+    border: 2px solid var(--black);
+    background: url('../assets/backgrounds/honey-bg.jpg');
+    background-size: cover;
+    font-family: var(--font-primary);
+    font-size: 18px;
+    font-weight: 700;
+    user-select: none;
+}
+
+.hit-button:hover{
+    transform: scale(1.04);
+}
+
+.save-name__button{
+    padding: .75rem;
+    min-width: 100px;
+    font-family: var(--font-primary);
+    border: none;
+    background-color: rgb(13, 138, 96);
+    transition:all 0.3s ease-in;
+    color: white;
+}
+
+.save-name__button:hover{
+    transform: scale(1.04);
+}
+
+.active{
+    display: block;
+}

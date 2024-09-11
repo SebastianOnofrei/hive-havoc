@@ -1,0 +1,93 @@
+.battle__information{
+    display: none;
+    position: absolute;
+    top: 15%;
+    left: 10%;
+    width: 80%;
+    height: 60%;
+    padding: 2rem;
+    white-space: nowrap;
+    background-color: rgb(2, 2, 2);
+    color: white;
+    border-radius: 2rem;
+    font-size:14px;
+
+    &.active{
+        display: flex; 
+    }
+
+    .battle__information--container{
+        display: none;
+        width: 100%;
+        justify-content: space-between;
+        list-style-type: none;
+
+        @media screen and (max-width:700px) { 
+            &.active{
+                display: flex; 
+                flex-direction: column;
+                gap: .25rem;
+            }
+        }
+        &.active{
+            display: flex; 
+            
+        }
+    }
+ 
+    .battle__information--queen,.battle__information--workers,.battle__information--drones{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+       
+        width: 100%;  
+
+        .bee-info{
+            font-family: var(--font-primary);
+            padding:4px;  
+        }
+
+        #queenImg,#workerImg,#droneImg{
+            position: absolute;
+            bottom: 10%;
+            padding: 1rem; 
+            border-radius: 1rem;           
+            width: 150px;
+            height: 150px;
+            background-color: rgba(24, 24, 24, 0.678); 
+            
+            
+            @media screen and (max-width:700px) {
+                display: none ;
+            }
+        }
+    }
+
+    .battle__information--drones{
+        border: none; 
+    }
+}
+
+.battle__details-button{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 2%;
+    right:10%;
+    width: 200px;
+    max-width: 300px;
+    height: 50px;
+    white-space: nowrap;
+    background-color: rgba(32, 12, 12, 0.897);
+    color: white;
+    font-family: var(--font-primary);
+    font-size: 24px;
+    user-select: none;
+    &.active{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+}

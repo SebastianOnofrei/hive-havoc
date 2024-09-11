@@ -1,0 +1,129 @@
+.settings{
+        display: none;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        
+        color: white;
+        padding: 2rem 4re,;
+        background: url('../assets/backgrounds/spring.png') ;
+        background-repeat: no-repeat;
+        background-position: top;
+        
+        &.active{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .settings__toast-notification{
+            position: absolute;
+        }
+
+        .settings__toast-notification.show{
+            transform: translateY(0);
+        }
+    
+        .settings__close-btn{
+            position: absolute;
+            top: 2%;
+            right: 2%;
+            width:  32px;
+            height: 32px;
+            background: url('../assets/close-btn.png'); 
+            transition: all 0.3s ease-in;
+        }
+    
+        .settings__close-btn:hover{
+            transform: scale(1.25);
+        }
+    
+        .settings__bee-queen{
+            min-height: 100px;
+            min-width: 100px;
+            max-width: 300px;
+            animation: bounce infinite linear 5s;
+        }
+        
+        .settings__options{
+            max-width: fit-content;
+            background-color: rgba(0, 0, 0, 0.671);
+            border-radius: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+             
+            @media screen and (max-width:600px) {
+                width: 300px;
+                h1{
+                    font-size: 32px;
+                }
+                .settings__player-name{
+                    display: flex;
+                    flex-direction: column;
+                    padding: 1rem;
+                    gap: 1rem;
+
+                    label{
+                        font-size: 12px;
+                    }
+                    input{
+                        
+                        font-size: 12px;
+                    }
+                    button{
+                        width: 30px;
+                        padding: 0;
+                        font-size: 12px;
+                    }
+                }
+                .settings__sound{ 
+                    padding: 1rem;
+                    display: flex;
+                }
+            }
+
+            @media screen and (min-width:600px ) {
+                max-width: unset;
+                width: 500px;
+                padding: 4rem;
+
+                h1{
+                    font-size: 50px;
+                }
+                .settings__player-name{
+                    display: flex;
+                    flex-direction: column;
+                    padding: 1rem;
+                    gap: 1rem;
+
+                    label{
+                        font-size: 16px;
+                    }
+                    input{
+                        
+                        font-size: 16px;
+                    }
+                    button{
+                        width: 30px;
+                        padding: .5rem;
+                        font-size: 16px;
+                    }
+                }
+                .settings__sound{ 
+                    position: relative;
+                    right: 50px;   
+                }
+            }
+        }
+        h1{
+            font-size: 64px;
+            padding: 0.5rem 4rem;
+            font-family: "Gabriola";
+            color: var(--secondary);  
+        }
+    }

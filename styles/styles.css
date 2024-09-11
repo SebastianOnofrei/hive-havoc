@@ -1,0 +1,30 @@
+@import url("./index.css");
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap');
+/* CSS Resets */
+*,*::after,*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+:root{
+    --primary:rgba(216, 63, 43, 0.959);
+    --black:rgb(56, 56, 56);
+    --secondary:#fcfcfc;
+    --font-primary:'Fraunces',sans-serif;
+    --box-shadow-honey: 0px 0px 16px rgba(255, 204, 0, 0.5), 0 8px 16px rgba(255, 204, 0, 0.3);
+}
+
+html{
+    cursor: url("/assets/cursor.cur"),default;
+}
+
+body{
+    background-color: black;
+    min-height: 100vh; 
+}
+
+label,input,button{
+    cursor: url("/assets/cursor.cur"),default;
+}

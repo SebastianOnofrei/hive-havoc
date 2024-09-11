@@ -1,0 +1,11 @@
+/* In this file we have all our imports, prepare them to be exported to styles.css */
+@import url("./button.css");
+@import url("./healthbar.css");
+@import url("./animations.css");
+@import url("./settings-pannel.css");
+@import url("./checkbox.css");
+@import url("./toast-notification.css");
+@import url("./canvas.css");
+@import url("./player-name.css");
+@import url("./sprites.css");
+@import url("./battle-info.css")
