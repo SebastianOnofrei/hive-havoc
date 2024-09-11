@@ -28,7 +28,6 @@ export class MainScene extends BaseScene {
     // event listeners
 
     this.hitButton.addEventListener("click", () => {
-      // aici bag in localStorage . ce game data pai this.swarm.
       localStorage.setItem("gameData", JSON.stringify(this.swarm));
       this.randomAttackSwarm();
     });
@@ -42,16 +41,13 @@ export class MainScene extends BaseScene {
     const swarm = this.swarm.hitRandomBee();
     const { swarmHealth, damagedBee, damageDone, swarmInfoByType } = swarm;
     this.swarmHealthBar.classList.add("tremble");
-    console.log(swarmHealth);
-    console.table(swarmInfoByType);
-    // de aici tre sa imi iau damaged bee. din hitRandom Bee. hitRandomBee sa imi dea un obiect cu astea chestii. ce randomBee, swarm health
     this.showDamage(damagedBee, damageDone);
     setTimeout(() => {
       this.swarmHealthBar.classList.remove("tremble");
     }, 1500);
   }
 
-  // functie de adaugare in battle details
+  // functie de adaugare detalii in swarm info
   updateBattleDetails() {
     // queen bee
     const queenInfo = this.swarm.queen;
@@ -75,7 +71,6 @@ export class MainScene extends BaseScene {
   }
 
   showDamage(damagedBee, damage) {
-    console.log(damagedBee);
     this.damageNotificationContainer.innerHTML = `You have attacked a <span style="color:orange"> ${damagedBee.name} bee </span> with <span style="color:orange"> ${damage} </span> points.`;
     this.damageNotificationContainer.classList.add("show");
 
@@ -181,14 +176,10 @@ export class MainScene extends BaseScene {
     }
 
     super.draw(ctx);
-
     this.showUiElements();
 
     const width = ctx.canvas.width;
     const height = ctx.canvas.height;
-
-    // aici sa pozitionez spritesurile in functie de width
-
     // background of scene
     const autumnBg = document.getElementById("autumn-bg");
     let backgroundImage = new Image();
@@ -208,6 +199,10 @@ export class MainScene extends BaseScene {
       ctx.drawImage(workerBeesSwarm, 1100, 280, 350, 350);
       ctx.drawImage(queenBee, 800, 200, 350, 350);
       ctx.drawImage(droneBeesSwarm, 600, 300, 300, 300);
+    } else if (width <= 1600 && width > 1000) {
+      ctx.drawImage(workerBeesSwarm, 600, 180, 350, 350);
+      ctx.drawImage(queenBee, 400, 200, 250, 350);
+      ctx.drawImage(droneBeesSwarm, 150, 250, 300, 300);
     } else if (width <= 1000 && width > 800) {
       ctx.drawImage(workerBeesSwarm, 400, 380, 350, 350);
       ctx.drawImage(queenBee, 200, 300, 350, 350);
@@ -232,9 +227,6 @@ export class MainScene extends BaseScene {
   }
 
   handleInput(x, y) {
-    console.log("Am dat click aicisa");
-    console.log(x, y);
-
     // Get canvas dimensions
     const canvas = document.getElementById("canvas1");
 

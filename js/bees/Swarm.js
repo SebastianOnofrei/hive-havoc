@@ -39,7 +39,6 @@ export class Swarm {
       this.setSwarmStatus("red");
     }
 
-    console.log(swarmHealth);
     return swarmHealth;
   }
 
@@ -81,8 +80,7 @@ export class Swarm {
 
       localStorage.removeItem("gameData");
     }
-    console.table(this);
-    console.log(aliveBees);
+
     this.health = this.getHealth();
     let swarmInfoByType = this.getAliveBeesByType();
     return {

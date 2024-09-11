@@ -4,9 +4,7 @@ import { StateManager } from "../core/StateManager.js";
 export class SettingsScene extends BaseScene {
   constructor() {
     super("settings"); // Call the constructor of the base class
-    this.toastNotification = document.querySelector(
-      ".settings__toast-notification"
-    );
+    this.toastNotification = document.querySelector(".settings__toast-notification");
     this.saveButton = document.querySelector(".save-name__button");
     this.settingsCloseBtn = document.querySelector(".settings__close-btn");
     this.soundCheckbox = document.querySelector("#sound-checkbox");
@@ -22,9 +20,9 @@ export class SettingsScene extends BaseScene {
     // Handle settings mute button
     this.soundCheckbox.addEventListener("click", () => {
       if (this.soundCheckbox.checked) {
-        muteSound();
+        this.muteSound();
       } else {
-        unMuteSound();
+        this.unMuteSound();
       }
     });
 
@@ -34,6 +32,14 @@ export class SettingsScene extends BaseScene {
         this.toastNotification.classList.remove("show");
       }, 3000);
     });
+  }
+
+  muteSound() {
+    this.audio.pause();
+  }
+
+  unMuteSound() {
+    this.audio.play();
   }
 
   //closing the settings menu
