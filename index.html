@@ -12,9 +12,7 @@
     <title>Hive Havoc</title>
 </head>
 <body>
-    
     <canvas id="canvas1"></canvas>
-    
     <!-- player name , health bat and damage notification -->
     <div class="toast-notification damage-done"><!-- populated by js. --></div>
     <div class="health-bar">
@@ -22,37 +20,33 @@
     </div>
     <div class="player__name-container"></div>
     
-    
     <!-- battle info -->
     <div class="battle__details-button">
         Swarm Info
     </div>
    
-    
     <div class="battle__information"> 
-        <!-- <button class="battle__information--close"></button> -->
-
         <ol class="battle__information--container active">
             <li class="battle__information--queen">
                 <h2>Queen</h2>
                 <div class="queen-info">
                     1
                 </div>
-                <img src="./assets/sprites/queen-bee.svg" alt="">
+                <img id="queenImg" src="./assets/sprites/queen-bee.svg" alt="">
             </li>
             <li class="battle__information--workers">
                 <h2>Workers</h2>
                 <div class="workers-info">
                     1
                 </div>
-                <img src="./assets/sprites/worker-bee.png" alt="">
+                <img id="workerImg" src="./assets/sprites/worker-bee.png" alt="">
             </li>
             <li class="battle__information--drones">
                 <h2>Drones</h2>
                 <div class="drones-info">
                     1
                 </div>
-                <img src="./assets/sprites/drone-bee.png" alt="">
+                <img  id="droneImg" src="./assets/sprites/drone-bee.png" alt="">
             </li>
         </ol>
     </div>

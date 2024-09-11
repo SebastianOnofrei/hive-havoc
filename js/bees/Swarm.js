@@ -1,7 +1,7 @@
 import { Queen } from "./Queen.js";
 import { Worker } from "./Worker.js";
 import { Drone } from "./Drone.js";
-
+import { Bee } from "./Bee.js";
 export class Swarm {
   // we could have a custom swarm, more than 13 bees
   constructor(workerBees = 5, droneBees = 8) {

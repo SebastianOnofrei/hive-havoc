@@ -10,6 +10,7 @@
     background-color: rgb(2, 2, 2);
     color: white;
     border-radius: 2rem;
+    font-size:14px;
 
     &.active{
         display: flex; 
@@ -21,8 +22,17 @@
         justify-content: space-between;
         list-style-type: none;
 
+        @media screen and (max-width:700px) {
+             
+            &.active{
+                display: flex; 
+                flex-direction: column;
+                gap: .25rem;
+            }
+        }
         &.active{
             display: flex; 
+            
         }
     }
  
@@ -30,36 +40,34 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 2rem;
+       
         width: 100%;  
-        /* border-right: 2px solid rgb(243, 177, 54); */
 
         .bee-info{
-            font-size: 16px;
             font-family: var(--font-primary);
-            padding:4px;
+            padding:4px;  
         }
 
-        img{
+        #queenImg,#workerImg,#droneImg{
             position: absolute;
             bottom: 10%;
             padding: 1rem; 
             border-radius: 1rem;           
             width: 150px;
             height: 150px;
-            background-color: rgba(24, 24, 24, 0.952);
-            box-shadow: var(--box-shadow-honey);
+            background-color: rgba(24, 24, 24, 0.678); 
+            
+            
+            @media screen and (max-width:700px) {
+                display: none ;
+            }
         }
     }
 
     .battle__information--drones{
-        border: none;
-        
+        border: none; 
     }
-    
 }
-
-
 
 .battle__details-button{
     display: none;
