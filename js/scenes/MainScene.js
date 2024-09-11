@@ -146,6 +146,7 @@ export class MainScene extends BaseScene {
 
   changeHealthBar() {
     const lifepointsText = document.querySelector(".health-bar__lifepoints");
+
     const swarmHP = this.swarm.health;
     const swarmMaxHP = this.swarm.maxHealth;
     const status = this.swarm.getSwarmStatus();
@@ -186,6 +187,7 @@ export class MainScene extends BaseScene {
     if (this.swarm.health <= 0) {
       this.hideUiElements();
       // recreating the swarm for future play
+      StateManager.removeLocalStorageData();
       this.swarm = new Swarm();
       StateManager.changeState("intro");
       return;

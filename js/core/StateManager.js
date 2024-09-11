@@ -19,6 +19,10 @@ export const StateManager = {
     return gameData;
   },
 
+  removeLocalStorageData() {
+    localStorage.clear();
+  },
+
   getState() {
     return this.currentState;
   },
