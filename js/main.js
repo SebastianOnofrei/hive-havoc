@@ -1,8 +1,6 @@
-// We put our JS here so we wait for all the assets to be loaded before doing anything
 import { IntroScene } from "./scenes/IntroScene.js";
 import { MainScene } from "./scenes/MainScene.js";
 import { GameOverScene } from "./scenes/GameOverScene.js";
-
 import { SettingsScene } from "./scenes/SettingsScene.js";
 import { StateManager } from "./core/StateManager.js";
 
@@ -58,14 +56,6 @@ window.addEventListener("load", function () {
     if (currentScene) {
       currentScene.handleInput(x, y);
     }
-  }
-
-  function muteSound() {
-    audio.pause();
-  }
-
-  function unMuteSound() {
-    audio.play();
   }
 
   function gameLoop() {

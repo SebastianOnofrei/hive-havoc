@@ -6,9 +6,7 @@
     height: 2rem;
     padding: 1.25rem 0;
     width: 80%;
-    /* box-shadow: var(--box-shadow-honey); */
-    /* animation: tremble 1s ease-in-out infinite; */
-    /* green is default color */
+  
     background-color: rgba(128, 253, 78, 0.911);
     &.red{
         background-color: red;

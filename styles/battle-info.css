@@ -22,8 +22,7 @@
         justify-content: space-between;
         list-style-type: none;
 
-        @media screen and (max-width:700px) {
-             
+        @media screen and (max-width:700px) { 
             &.active{
                 display: flex; 
                 flex-direction: column;

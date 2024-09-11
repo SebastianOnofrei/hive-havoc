@@ -3,7 +3,7 @@ import { StateManager } from "../core/StateManager.js";
 
 export class SettingsScene extends BaseScene {
   constructor() {
-    super("settings"); // Call the constructor of the base class
+    super("settings");
     this.toastNotification = document.querySelector(".settings__toast-notification");
     this.saveButton = document.querySelector(".save-name__button");
     this.settingsCloseBtn = document.querySelector(".settings__close-btn");

@@ -17,14 +17,12 @@
 }
 
 html{
- 
     cursor: url("/assets/cursor.cur"),default;
 }
 
 body{
     background-color: black;
-    min-height: 100vh;
-   
+    min-height: 100vh; 
 }
 
 label,input,button{

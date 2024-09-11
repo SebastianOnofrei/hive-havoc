@@ -1,5 +1,4 @@
 .settings{
-    /* activam cu clasa active */
         display: none;
         position: absolute;
         top: 0;
@@ -51,8 +50,6 @@
         }
         
         .settings__options{
-        
-           
             max-width: fit-content;
             background-color: rgba(0, 0, 0, 0.671);
             border-radius: 0.5rem;
@@ -123,26 +120,10 @@
                 }
             }
         }
-
-        .settings__player-name{
-            
-        
-
-            
-            
-        }
-
-        .settings__sound{
-              
-        
-        }
-
-
         h1{
             font-size: 64px;
             padding: 0.5rem 4rem;
             font-family: "Gabriola";
-            color: var(--secondary);
-            
+            color: var(--secondary);  
         }
     }

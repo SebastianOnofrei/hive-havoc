@@ -5,16 +5,17 @@ import { Swarm } from "../bees/Swarm.js";
 export class MainScene extends BaseScene {
   constructor() {
     super("main");
-
     this.swarm = new Swarm();
+
     if (StateManager.checkLocalStorage()) {
       let gameData = JSON.parse(localStorage.getItem("gameData"));
       this.swarm.setSwarmQueen(gameData.queen);
       this.swarm.setSwarmWorkers(gameData.workers);
       this.swarm.setSwarmDrones(gameData.drones);
+      this.swarm.health = gameData.health;
+      this.swarm.status = gameData.status;
     }
 
-    // DOM selectors for the UI elements
     this.swarmHealthBar = document.querySelector(".health-bar");
     this.playerNameContainer = document.querySelector(".player__name-container");
     this.damageNotificationContainer = document.querySelector(".toast-notification");
@@ -28,8 +29,8 @@ export class MainScene extends BaseScene {
     // event listeners
 
     this.hitButton.addEventListener("click", () => {
-      localStorage.setItem("gameData", JSON.stringify(this.swarm));
       this.randomAttackSwarm();
+      localStorage.setItem("gameData", JSON.stringify(this.swarm));
     });
     this.battleInfoButton.addEventListener("click", () => {
       // aici deschidem divul cu detalii.
@@ -223,37 +224,6 @@ export class MainScene extends BaseScene {
       ctx.drawImage(workerBeesSwarm, 500, 380, 350, 350);
       ctx.drawImage(queenBee, 300, 300, 350, 350);
       ctx.drawImage(droneBeesSwarm, 180, 450, 300, 300);
-    }
-  }
-
-  handleInput(x, y) {
-    // Get canvas dimensions
-    const canvas = document.getElementById("canvas1");
-
-    const width = canvas.width;
-    const height = canvas.height;
-
-    // Define proportions for buttons
-    const buttonWidth = width * 0.25;
-    const buttonHeight = height * 0.07;
-    const buttonX = width * 0.125;
-    const playButtonY = height * 0.25;
-    const settingsButtonY = height * 0.4;
-
-    if (
-      x >= buttonX &&
-      x <= buttonX + buttonWidth &&
-      y >= playButtonY &&
-      y <= playButtonY + buttonHeight
-    ) {
-      StateManager.changeState(localStorage.getItem("gameData") ? "resume" : "main"); // Go to Resume or Main Scene
-    } else if (
-      x >= buttonX &&
-      x <= buttonX + buttonWidth &&
-      y >= settingsButtonY &&
-      y <= settingsButtonY + buttonHeight
-    ) {
-      StateManager.changeState("settings"); // Go to Settings Scene
     }
   }
 }

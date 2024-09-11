@@ -20,6 +20,8 @@ export class GameOverScene extends BaseScene {
         this.updateCountdownDisplay();
       } else {
         clearInterval(this.countdownInterval);
+        this.countdown = 5;
+        this.countdownInterval = null;
         StateManager.changeState("intro"); // Redirect to the main menu
       }
     }, 1000); // Update every second
@@ -55,10 +57,5 @@ export class GameOverScene extends BaseScene {
     }
 
     this.updateCountdownDisplay(); // Update the display with the countdown message
-  }
-
-  handleInput(x, y) {
-    // You might want to disable input handling in the game over screen
-    // since the game should automatically return to the main menu
   }
 }
