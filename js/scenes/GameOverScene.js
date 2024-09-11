@@ -3,84 +3,62 @@ import { StateManager } from "../core/StateManager.js";
 
 export class GameOverScene extends BaseScene {
   constructor() {
-    super("intro"); // Call the constructor of the base class
+    super("intro");
+    this.countdown = 5; // Initialize the countdown
+    this.countdownInterval = null; // To keep track of the countdown interval
+    this.honeyBg = document.getElementById("honey-bg");
+    this.width = 0;
+    this.height = 0;
   }
 
-  draw(ctx) {
-    super.draw(ctx); // Call the base class draw method to clear the canvas
-
-    /*  
-      We get the canvas dimensions so that we can create coordinates
-      and elements on the canvas, whose sizes are relative to the canvas sizes
-      and not to the viewport - due to resizing of the browser.
-    */
-
-    const width = ctx.canvas.width;
-    const height = ctx.canvas.height;
-
-    // Define proportions for text and buttons
-    const buttonWidth = width * 0.25;
-    const buttonHeight = height * 0.07;
-    const buttonX = width * 0.125;
-    const playButtonY = height * 0.25;
-    const settingsButtonY = height * 0.4;
-
-    ctx.font = "30px Arial";
-    ctx.fillText("Welcome to the Game", width * 0.25, height * 0.1);
-
-    // Draw "Play Now" button
-    ctx.fillStyle = "yellow";
-    ctx.fillRect(buttonX, playButtonY, buttonWidth, buttonHeight);
-    ctx.fillStyle = "black";
-    ctx.fillText(
-      "Play Now",
-      buttonX + buttonWidth * 0.1,
-      playButtonY + buttonHeight * 0.7
-    );
-
-    // Draw "Settings" button
-    ctx.fillStyle = "yellow";
-    ctx.fillRect(buttonX, settingsButtonY, buttonWidth, buttonHeight);
-    ctx.fillStyle = "black";
-    ctx.fillText(
-      "Settings",
-      buttonX + buttonWidth * 0.1,
-      settingsButtonY + buttonHeight * 0.7
-    );
+  // Method to start the countdown
+  startCountdown() {
+    this.countdown = 5;
+    this.countdownInterval = setInterval(() => {
+      if (this.countdown > 0) {
+        this.countdown--;
+        this.updateCountdownDisplay();
+      } else {
+        clearInterval(this.countdownInterval);
+        StateManager.changeState("intro"); // Redirect to the main menu
+      }
+    }, 1000); // Update every second
   }
 
-  handleInput(x, y) {
-    console.log("Am dat click aicisa");
-    console.log(x, y);
-
-    // Get canvas dimensions
+  // Method to update countdown display
+  updateCountdownDisplay() {
     const canvas = document.getElementById("canvas1");
+    const ctx = canvas.getContext("2d");
     const width = canvas.width;
     const height = canvas.height;
 
-    // Define proportions for buttons
-    const buttonWidth = width * 0.25;
-    const buttonHeight = height * 0.07;
-    const buttonX = width * 0.125;
-    const playButtonY = height * 0.25;
-    const settingsButtonY = height * 0.4;
+    let backgroundImage = new Image();
+    backgroundImage.src = this.honeyBg.src;
+    ctx.drawImage(backgroundImage, 0, 0, this.width, this.height);
+    // Draw the game over message
+    ctx.font = "40px Gabriola";
+    ctx.fillStyle = "white";
+    ctx.fillText("YOU WON. GAME OVER.", width * 0.35, height * 0.3);
 
-    if (
-      x >= buttonX &&
-      x <= buttonX + buttonWidth &&
-      y >= playButtonY &&
-      y <= playButtonY + buttonHeight
-    ) {
-      StateManager.changeState(
-        localStorage.getItem("gameData") ? "resume" : "main"
-      ); // Go to Resume or Main Scene
-    } else if (
-      x >= buttonX &&
-      x <= buttonX + buttonWidth &&
-      y >= settingsButtonY &&
-      y <= settingsButtonY + buttonHeight
-    ) {
-      StateManager.changeState("settings"); // Go to Settings Scene
+    // Draw countdown message
+    ctx.font = "30px Gabriola";
+    ctx.fillStyle = "white";
+    ctx.fillText(`Returning to main menu in ${this.countdown}...`, width * 0.35, height * 0.5);
+  }
+
+  draw(ctx) {
+    super.draw(ctx);
+    this.width = ctx.canvas.width;
+    this.height = ctx.canvas.height;
+    if (this.countdownInterval === null) {
+      this.startCountdown(); // Start the countdown if it's not already running
     }
+
+    this.updateCountdownDisplay(); // Update the display with the countdown message
+  }
+
+  handleInput(x, y) {
+    // You might want to disable input handling in the game over screen
+    // since the game should automatically return to the main menu
   }
 }

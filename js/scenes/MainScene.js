@@ -171,7 +171,7 @@ export class MainScene extends BaseScene {
       // recreating the swarm for future play
       StateManager.removeLocalStorageData();
       this.swarm = new Swarm();
-      StateManager.changeState("intro");
+      StateManager.changeState("gameover");
       return;
     }
 
