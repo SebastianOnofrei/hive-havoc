@@ -209,25 +209,25 @@ export class MainScene extends BaseScene {
       ctx.drawImage(queenBee, 800, 200, 350, 350);
       ctx.drawImage(droneBeesSwarm, 600, 300, 300, 300);
     } else if (width <= 1000 && width > 800) {
-      ctx.drawImage(workerBeesSwarm, 500, 280, 250, 250);
-      ctx.drawImage(queenBee, 300, 200, 250, 250);
-      ctx.drawImage(droneBeesSwarm, 100, 300, 200, 200);
+      ctx.drawImage(workerBeesSwarm, 400, 380, 350, 350);
+      ctx.drawImage(queenBee, 200, 300, 350, 350);
+      ctx.drawImage(droneBeesSwarm, 80, 450, 300, 300);
     } else if (width <= 800 && width > 600) {
-      ctx.drawImage(workerBeesSwarm, 400, 280, 250, 250);
-      ctx.drawImage(queenBee, 200, 200, 250, 250);
-      ctx.drawImage(droneBeesSwarm, 80, 350, 200, 200);
+      ctx.drawImage(workerBeesSwarm, 400, 380, 250, 250);
+      ctx.drawImage(queenBee, 200, 300, 250, 250);
+      ctx.drawImage(droneBeesSwarm, 80, 450, 200, 200);
     } else if (width <= 600 && width > 550) {
       ctx.drawImage(workerBeesSwarm, 300, 380, 250, 250);
       ctx.drawImage(queenBee, 200, 200, 250, 250);
       ctx.drawImage(droneBeesSwarm, 80, 350, 200, 200);
     } else if (width <= 550) {
-      ctx.drawImage(workerBeesSwarm, 200, 380, 250, 250);
-      ctx.drawImage(queenBee, 100, 200, 250, 250);
-      ctx.drawImage(droneBeesSwarm, 30, 450, 200, 200);
+      ctx.drawImage(workerBeesSwarm, 160, 300, 150, 150);
+      ctx.drawImage(queenBee, 100, 200, 150, 150);
+      ctx.drawImage(droneBeesSwarm, 30, 300, 100, 100);
     } else {
-      ctx.drawImage(workerBeesSwarm, 700, 280, 350, 350);
-      ctx.drawImage(queenBee, 450, 200, 350, 350);
-      ctx.drawImage(droneBeesSwarm, 300, 300, 300, 300);
+      ctx.drawImage(workerBeesSwarm, 500, 380, 350, 350);
+      ctx.drawImage(queenBee, 300, 300, 350, 350);
+      ctx.drawImage(droneBeesSwarm, 180, 450, 300, 300);
     }
   }
 

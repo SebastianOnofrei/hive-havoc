@@ -15,7 +15,9 @@
         
         &.active{
             display: flex;
-            gap: 6rem;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
         }
 
         .settings__toast-notification{
@@ -41,58 +43,99 @@
         }
     
         .settings__bee-queen{
-            min-height: 150px;
-            min-width: 150px;
+            min-height: 100px;
+            min-width: 100px;
             max-width: 300px;
             animation: bounce infinite linear 5s;
         }
         
         .settings__options{
-            min-width: 500px;
-            flex-grow: 1;
+        
+           
             max-width: fit-content;
-            min-height: 500px;
             background-color: rgba(0, 0, 0, 0.671);
             border-radius: 0.5rem;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1rem;
-
-            .settings__player-name{
-                padding: 2rem 1rem;
-                display: flex;
-                align-items: center;
-                gap: 1rem;
-
-                label,input{
-                    font-family: "Gabriola";
-                    font-size: 22px;
-                    width: 25%;
+             
+            @media screen and (max-width:600px) {
+                width: 300px;
+                h1{
+                    font-size: 32px;
                 }
-                input{
-                    flex-grow: 1;
-                    padding-left: 1rem;
+                .settings__player-name{
+                    display: flex;
+                    flex-direction: column;
+                    padding: 1rem;
+                    gap: 1rem;
+
+                    label{
+                        font-size: 12px;
+                    }
+                    input{
+                        
+                        font-size: 12px;
+                    }
+                    button{
+                        width: 30px;
+                        padding: 0;
+                        font-size: 12px;
+                    }
+                }
+                .settings__sound{ 
+                    padding: 1rem;
+                    display: flex;
                 }
             }
 
-            .settings__sound{
-                padding: 2rem 1rem;
-                display: flex;
-                align-items: center;
-                justify-content: start;
-                gap: 1rem; 
-            
-                label{
-                    
+            @media screen and (min-width:600px ) {
+                max-width: unset;
+                width: 500px;
+                padding: 4rem;
+
+                h1{
+                    font-size: 50px;
+                }
+                .settings__player-name{
                     display: flex;
+                    flex-direction: column;
+                    padding: 1rem;
                     gap: 1rem;
-                    align-items: center;
-                    font-family: "Gabriola";
-                    font-size: 24px;  
-                } 
+
+                    label{
+                        font-size: 16px;
+                    }
+                    input{
+                        
+                        font-size: 16px;
+                    }
+                    button{
+                        width: 30px;
+                        padding: .5rem;
+                        font-size: 16px;
+                    }
+                }
+                .settings__sound{ 
+                    position: relative;
+                    right: 50px;   
+                }
             }
         }
+
+        .settings__player-name{
+            
+        
+
+            
+            
+        }
+
+        .settings__sound{
+              
+        
+        }
+
 
         h1{
             font-size: 64px;
