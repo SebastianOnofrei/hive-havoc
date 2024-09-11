@@ -1,0 +1,19 @@
+/* 
+ We don't want to show the sprites in HTML directly
+ We will inject them into the Canvas with by using Canvas API
+*/
+#worker-bee,#drone-bee,#queen-bee{
+    display: none;
+    width: 100px;
+    height: 100px;
+}
+
+#drone-bees-swarm,#worker-bees-swarm{
+    display: none;
+    width:150px;
+    height: 150px;
+}
+
+#spring-bg,#summer-bg,#autumn-bg,#winter-bg,#honey-bg{
+    display: none;
+}

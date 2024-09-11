@@ -12,14 +12,51 @@
     <title>Hive Havoc</title>
 </head>
 <body>
+    
     <canvas id="canvas1"></canvas>
-    <div class="toast-notification damage-done">
-        <!-- populated by js. -->
-    </div>
+    
+    <!-- player name , health bat and damage notification -->
+    <div class="toast-notification damage-done"><!-- populated by js. --></div>
     <div class="health-bar">
         <h2 class="health-bar__lifepoints"></h2>
     </div>
     <div class="player__name-container"></div>
+    
+    
+    <!-- battle info -->
+    <div class="battle__details-button">
+        Battle Details
+    </div>
+   
+    
+    <div class="battle__information"> 
+        <!-- <button class="battle__information--close"></button> -->
+
+        <ol class="battle__information--container active">
+            <li class="battle__information--queen">
+                <h2>Queen</h2>
+                <div class="queen-info">
+                    1
+                </div>
+                <img src="./assets/sprites/queen-bee.svg" alt="">
+            </li>
+            <li class="battle__information--workers">
+                <h2>Workers</h2>
+                <div class="workers-info">
+                    1
+                </div>
+                <img src="./assets/sprites/worker-bee.png" alt="">
+            </li>
+            <li class="battle__information--drones">
+                <h2>Drones</h2>
+                <div class="drones-info">
+                    1
+                </div>
+                <img src="./assets/sprites/drone-bee.png" alt="">
+            </li>
+        </ol>
+    </div>
+    <!-- settings -->
     <div class="settings"> 
         <div class="settings__close-btn"></div>
         <div class="toast-notification settings__toast-notification">
@@ -41,9 +78,9 @@
             </div>
         </div>
     </div>
-    
+
     <button class="button hit-button">HIT</button>
-    
+
     <!-- I load here all the assets I need in JavaScript -->
     <!-- loading sounds -->
      <audio src="./assets/sounds/mortal-kombat-theme.mp3" loop></audio>

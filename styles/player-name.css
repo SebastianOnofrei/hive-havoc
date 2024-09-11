@@ -1,0 +1,22 @@
+.player__name-container{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    width: 250px;
+    max-width: 600px;
+    height: 50px;
+    white-space: nowrap;
+    background: url('../assets/backgrounds/honey-bg.jpg');
+    background-size: cover;
+    border: none;
+    box-shadow: var(--box-shadow-honey);
+    font-family: var(--font-primary);
+    font-size: 24px;
+    
+    &.active{
+        display: flex;
+    }
+}

@@ -42,28 +42,20 @@ export class IntroScene extends BaseScene {
 
     ctx.font = "60px Segoe Script";
     ctx.fillStyle = "black";
-    ctx.fillText("HIVE HAVOC", width * 0.3, height * 0.15);
+    ctx.fillText("HIVE KOMBAT", width * 0.3, height * 0.15);
 
     ctx.font = "42px Gabriola";
     // Draw "Play Now" button
     ctx.fillStyle = "orangered";
     ctx.fillRect(buttonX, playButtonY, buttonWidth, buttonHeight);
     ctx.fillStyle = "white";
-    ctx.fillText(
-      "Play",
-      buttonX + buttonWidth * 0.1,
-      playButtonY + buttonHeight * 0.7
-    );
+    ctx.fillText("Play", buttonX + buttonWidth * 0.1, playButtonY + buttonHeight * 0.7);
 
     // Draw "Settings" button
     ctx.fillStyle = "orangered";
     ctx.fillRect(buttonX, settingsButtonY, buttonWidth, buttonHeight);
     ctx.fillStyle = "white";
-    ctx.fillText(
-      "Settings",
-      buttonX + buttonWidth * 0.1,
-      settingsButtonY + buttonHeight * 0.7
-    );
+    ctx.fillText("Settings", buttonX + buttonWidth * 0.1, settingsButtonY + buttonHeight * 0.7);
   }
 
   handleInput(x, y) {
@@ -88,9 +80,7 @@ export class IntroScene extends BaseScene {
       y >= playButtonY &&
       y <= playButtonY + buttonHeight
     ) {
-      StateManager.changeState(
-        localStorage.getItem("gameData") ? "resume" : "main"
-      ); // Go to Resume or Main Scene
+      StateManager.changeState(localStorage.getItem("gameData") ? "resume" : "main"); // Go to Resume or Main Scene
     } else if (
       x >= buttonX &&
       x <= buttonX + buttonWidth &&

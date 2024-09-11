@@ -57,6 +57,14 @@ export class Swarm {
     return this.getAllBees().filter((bee) => bee.health > 0);
   }
 
+  getAliveBeesByType() {
+    return {
+      queen: this.queen,
+      workers: this.workers.filter((bee) => bee.health >= 0),
+      drones: this.drones.filter((bee) => bee.health >= 0),
+    };
+  }
+
   isGameOver() {
     return this.queen.isDead() || this.getAliveBees().length === 0;
   }
@@ -82,11 +90,12 @@ export class Swarm {
     console.table(this);
     console.log(aliveBees);
     this.health = this.getHealth();
-
+    let swarmInfoByType = this.getAliveBeesByType();
     return {
       swarmHealth: this.health,
       damagedBee: randomBee,
       damageDone: damage,
+      swarmInfoByType,
     };
   }
 
