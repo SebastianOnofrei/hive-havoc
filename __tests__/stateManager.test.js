@@ -1,5 +1,5 @@
 // StateManager.test.js
-import { StateManager } from "../js/core/StateManager"; // Adjust the path as needed
+import { StateManager } from "../js/core/StateManager";
 
 describe("StateManager", () => {
   beforeEach(() => {

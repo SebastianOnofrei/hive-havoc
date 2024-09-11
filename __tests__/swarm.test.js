@@ -1,7 +1,5 @@
 // swarm.test.js
 import { Swarm } from "../js/bees/Swarm.js";
-import { Queen } from "../js/bees/Queen.js";
-import { Bee } from "../js/bees/Bee.js";
 
 describe("Swarm Class", () => {
   test("should create a swarm with a queen, workers, and drones", () => {

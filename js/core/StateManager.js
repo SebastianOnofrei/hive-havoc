@@ -15,7 +15,6 @@ export const StateManager = {
 
   getGameDataFromLocalStorage() {
     let gameData = JSON.parse(localStorage.getItem("gameData"));
-    console.log(gameData);
     return gameData;
   },
 
