@@ -98,7 +98,7 @@ export class IntroScene extends BaseScene {
 
     ctx.fillStyle = "white";
     let text;
-    if (this.hasLocalStorageInfo) {
+    if (localStorage.getItem("gameData")) {
       text = "Resume";
     } else {
       text = "Play new";

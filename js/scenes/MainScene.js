@@ -2,13 +2,10 @@ import { BaseScene } from "./BaseScene.js";
 import { StateManager } from "../core/StateManager.js";
 import { Swarm } from "../bees/Swarm.js";
 
-// SA VERIFIC DACA EXISTA STATE. DACA EXISTA , IAU STATE-U si fac parse la JSON.
-
 export class MainScene extends BaseScene {
   constructor() {
     super("main");
-    // aici implementez logica
-    // ASTA E . swarmu trebuie conditionat.
+
     this.swarm = new Swarm();
     if (StateManager.checkLocalStorage()) {
       let gameData = JSON.parse(localStorage.getItem("gameData"));
@@ -16,16 +13,6 @@ export class MainScene extends BaseScene {
       this.swarm.setSwarmWorkers(gameData.workers);
       this.swarm.setSwarmDrones(gameData.drones);
     }
-
-    //  hmm deci . trebuie sa recreez swarmul din game data-ul meu
-
-    // incep cu workers .
-    // deci o sa am un array din workers . din el , construiesc Swarmul.
-
-    // ok deci trebuie sa am obiectu creat. eu doar sa ii modific queen workers si drones
-
-    console.table(this.swarm);
-    console.log(this.swarm.workers);
 
     // DOM selectors for the UI elements
     this.swarmHealthBar = document.querySelector(".health-bar");
@@ -200,20 +187,48 @@ export class MainScene extends BaseScene {
     const width = ctx.canvas.width;
     const height = ctx.canvas.height;
 
+    // aici sa pozitionez spritesurile in functie de width
+
     // background of scene
     const autumnBg = document.getElementById("autumn-bg");
     let backgroundImage = new Image();
     backgroundImage.src = autumnBg.src;
+    // Draw new background
+    ctx.drawImage(backgroundImage, 0, 0, width, height);
+
+    this.drawSprites(ctx, width);
+  }
+
+  drawSprites(ctx, width) {
     // swarm sprites
     const queenBee = document.getElementById("queen-bee");
     const droneBeesSwarm = document.getElementById("drone-bees-swarm");
     const workerBeesSwarm = document.getElementById("worker-bees-swarm");
-
-    // Draw new background
-    ctx.drawImage(backgroundImage, 0, 0, width, height);
-    ctx.drawImage(workerBeesSwarm, 100, 400, 250, 250);
-    ctx.drawImage(queenBee, 300, 300, 250, 250);
-    ctx.drawImage(droneBeesSwarm, 500, 400, 250, 250);
+    if (width >= 1600) {
+      ctx.drawImage(workerBeesSwarm, 1100, 280, 350, 350);
+      ctx.drawImage(queenBee, 800, 200, 350, 350);
+      ctx.drawImage(droneBeesSwarm, 600, 300, 300, 300);
+    } else if (width <= 1000 && width > 800) {
+      ctx.drawImage(workerBeesSwarm, 500, 280, 250, 250);
+      ctx.drawImage(queenBee, 300, 200, 250, 250);
+      ctx.drawImage(droneBeesSwarm, 100, 300, 200, 200);
+    } else if (width <= 800 && width > 600) {
+      ctx.drawImage(workerBeesSwarm, 400, 280, 250, 250);
+      ctx.drawImage(queenBee, 200, 200, 250, 250);
+      ctx.drawImage(droneBeesSwarm, 80, 350, 200, 200);
+    } else if (width <= 600 && width > 550) {
+      ctx.drawImage(workerBeesSwarm, 300, 380, 250, 250);
+      ctx.drawImage(queenBee, 200, 200, 250, 250);
+      ctx.drawImage(droneBeesSwarm, 80, 350, 200, 200);
+    } else if (width <= 550) {
+      ctx.drawImage(workerBeesSwarm, 200, 380, 250, 250);
+      ctx.drawImage(queenBee, 100, 200, 250, 250);
+      ctx.drawImage(droneBeesSwarm, 30, 450, 200, 200);
+    } else {
+      ctx.drawImage(workerBeesSwarm, 700, 280, 350, 350);
+      ctx.drawImage(queenBee, 450, 200, 350, 350);
+      ctx.drawImage(droneBeesSwarm, 300, 300, 300, 300);
+    }
   }
 
   handleInput(x, y) {
