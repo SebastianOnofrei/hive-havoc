@@ -1,11 +1,29 @@
 import { BaseScene } from "./BaseScene.js";
 import { StateManager } from "../core/StateManager.js";
 import { Swarm } from "../bees/Swarm.js";
+
+// SA VERIFIC DACA EXISTA STATE. DACA EXISTA , IAU STATE-U si fac parse la JSON.
+
 export class MainScene extends BaseScene {
   constructor() {
     super("main");
     // aici implementez logica
+    // ASTA E . swarmu trebuie conditionat.
     this.swarm = new Swarm();
+    if (StateManager.checkLocalStorage()) {
+      let gameData = JSON.parse(localStorage.getItem("gameData"));
+      this.swarm.setSwarmQueen(gameData.queen);
+      this.swarm.setSwarmWorkers(gameData.workers);
+      this.swarm.setSwarmDrones(gameData.drones);
+    }
+
+    //  hmm deci . trebuie sa recreez swarmul din game data-ul meu
+
+    // incep cu workers .
+    // deci o sa am un array din workers . din el , construiesc Swarmul.
+
+    // ok deci trebuie sa am obiectu creat. eu doar sa ii modific queen workers si drones
+
     console.table(this.swarm);
     console.log(this.swarm.workers);
 

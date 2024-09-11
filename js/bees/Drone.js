@@ -1,7 +1,7 @@
 import { Bee } from "./Bee.js";
 
 export class Drone extends Bee {
-  constructor() {
-    super("Drone", 50);
+  constructor(health = 50, maxHealth = 50) {
+    super("Drone", health, maxHealth);
   }
 }

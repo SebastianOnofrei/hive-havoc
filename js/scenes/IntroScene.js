@@ -3,7 +3,8 @@ import { StateManager } from "../core/StateManager.js";
 
 export class IntroScene extends BaseScene {
   constructor() {
-    super("intro"); // Call the constructor of the base class
+    super("intro");
+    this.hasLocalStorageInfo = StateManager.checkLocalStorage();
   }
 
   draw(ctx) {
@@ -49,7 +50,11 @@ export class IntroScene extends BaseScene {
     ctx.fillStyle = "orangered";
     ctx.fillRect(buttonX, playButtonY, buttonWidth, buttonHeight);
     ctx.fillStyle = "white";
-    ctx.fillText("Play", buttonX + buttonWidth * 0.1, playButtonY + buttonHeight * 0.7);
+    if (this.hasLocalStorageInfo) {
+      ctx.fillText("Resume", buttonX + buttonWidth * 0.1, playButtonY + buttonHeight * 0.7);
+    } else {
+      ctx.fillText("Play New", buttonX + buttonWidth * 0.1, playButtonY + buttonHeight * 0.7);
+    }
 
     // Draw "Settings" button
     ctx.fillStyle = "orangered";
@@ -80,7 +85,7 @@ export class IntroScene extends BaseScene {
       y >= playButtonY &&
       y <= playButtonY + buttonHeight
     ) {
-      StateManager.changeState(localStorage.getItem("gameData") ? "resume" : "main"); // Go to Resume or Main Scene
+      StateManager.changeState("main");
     } else if (
       x >= buttonX &&
       x <= buttonX + buttonWidth &&

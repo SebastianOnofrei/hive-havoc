@@ -111,4 +111,19 @@ export class Swarm {
   getSwarmStatus() {
     return this.status;
   }
+
+  setSwarmQueen(queen) {
+    this.queen = new Queen(queen.health);
+  }
+
+  setSwarmWorkers(data) {
+    let workerBees = data.map((worker) => new Worker(worker.health));
+    this.workers = workerBees;
+    // ori tre sa fac aici la fel cu map sau array fill :)
+  }
+
+  setSwarmDrones(data) {
+    let droneBess = data.map((drone) => new Drone(drone.health));
+    this.drones = droneBess;
+  }
 }

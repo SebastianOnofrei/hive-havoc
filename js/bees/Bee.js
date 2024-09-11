@@ -1,8 +1,8 @@
 export class Bee {
-  constructor(name, health) {
+  constructor(name, health, maxHealth) {
     this.name = name;
     this.health = parseInt(health);
-    this.maxHealth = parseInt(health);
+    this.maxHealth = parseInt(maxHealth);
     this.status = "green";
   }
 
