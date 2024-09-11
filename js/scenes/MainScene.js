@@ -18,19 +18,31 @@ export class MainScene extends BaseScene {
     this.playerNameContainer = document.querySelector(
       ".player__name-container"
     );
+    this.damageNotificationContainer = document.querySelector(
+      ".toast-notification"
+    );
   }
 
   randomAttackSwarm() {
-    const swarmHealth = this.swarm.hitRandomBee();
+    const attackInfo = this.swarm.hitRandomBee();
+    const { swarmHealth, damagedBee, damageDone } = attackInfo;
     this.swarmHealthBar.classList.add("tremble");
     console.log(swarmHealth);
+    // de aici tre sa imi iau damaged bee. din hitRandom Bee. hitRandomBee sa imi dea un obiect cu astea chestii. ce randomBee, swarm health
+    this.showDamage(damagedBee, damageDone);
     setTimeout(() => {
       this.swarmHealthBar.classList.remove("tremble");
-    }, 1000);
+    }, 1500);
   }
 
-  showDamage() {
-    // tre sa fac un div ,
+  showDamage(damagedBee, damage) {
+    console.log(damagedBee);
+    this.damageNotificationContainer.textContent = ` You have attacked a ${damagedBee.name} bee with ${damage} points.`;
+    this.damageNotificationContainer.classList.add("show");
+
+    setTimeout(() => {
+      this.damageNotificationContainer.classList.remove("show");
+    }, 3000);
   }
 
   showPlayerName() {

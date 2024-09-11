@@ -1,0 +1,29 @@
+
+.toast-notification{
+    display: block;
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
+    right: 10%;
+    top: 2%;
+    width: 100%;
+    color: white;
+    border-radius: 1rem;
+    transform: translateY(-100px);
+    transition: all 0.3s ease-in;
+    background-color: rgba(89, 141, 12, 0.781);
+
+}
+
+.toast-notification.show{
+    transform: translateY(0);
+}
+
+.damage-done{
+    padding: 1.5rem;
+    width:600px;
+    right: -300px;
+    top: 10px;
+    background-color: rgba(36, 31, 56, 0.792);
+    color: white;
+}

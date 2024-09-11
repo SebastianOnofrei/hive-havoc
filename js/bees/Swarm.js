@@ -82,7 +82,12 @@ export class Swarm {
     console.table(this);
     console.log(aliveBees);
     this.health = this.getHealth();
-    return this.health;
+
+    return {
+      swarmHealth: this.health,
+      damagedBee: randomBee,
+      damageDone: damage,
+    };
   }
 
   getDamageForBee(bee) {
